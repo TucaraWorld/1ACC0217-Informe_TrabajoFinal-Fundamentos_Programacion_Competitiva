@@ -25,57 +25,44 @@
 
 ---
 
+<h2 align="center"> CONTENIDO</h2>
 
+## 1. Introducción
 
-
-
-## 📚 Contenido
-
-- [Introducción](#introducción)
-- [Objetivo del estudiante](#objetivo-del-estudiante)
-- [Plan de actividades](#plan-de-actividades)
-- [Desarrollo](#desarrollo)
-  - [Ejercicio con Map](#ejercicio-con-map)
-  - [Ejercicio con KMP](#ejercicio-con-kmp)
-  - [Ejercicio con Segment Tree](#ejercicio-con-segment-tree)
-  - [Ejercicio con Trie](#ejercicio-con-trie)
-  - [Ejercicio con Programación Dinámica](#ejercicio-con-programación-dinámica)
-- [Conclusiones](#conclusiones)
-- [Bibliografía](#bibliografía)
+### 1.1 Contexto, objetivo, métodos, conclusiones
 
 ---
 
-## 🧩 Introducción
+## 2. Objetivo del estudiante
 
-_Contexto, objetivo, métodos y conclusiones generales..._
-
----
-
-## 🎯 Objetivo del estudiante
-
-_Describa cómo ha logrado el objetivo de acuerdo con el student outcome de su carrera._
+### 2.1 Cómo se logró el objetivo según el *student outcome*
 
 ---
 
-## 🛠️ Plan de actividades
+## 3. Plan de actividades
 
-_Descripción detallada de las actividades realizadas para la construcción de los algoritmos._
+### 3.1 Actividades para construir los algoritmos
 
 ---
 
-## 🧠 Desarrollo
+## 4. Desarrollo
 
-### 🗺️ Ejercicio con Map
+### 4.1 Ejercicios con estructura `map`
 
-- **Tipo de algoritmo:** Estructura `map`
-- **Plataforma:** LeetCode  
-- **Enlace:** [maximum-sum-queries](https://leetcode.com/problems/maximum-sum-queries/submissions/1683370047/)
+#### 4.1.1 Primer ejercicio  
 
-#### 🧾 Enunciado
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `map`.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode
+- **Enlace:**  
+  https://leetcode.com/problems/maximum-sum-queries/submissions/1683370047/  
+- **Enunciado:**  
+  Se te dan dos arreglos de enteros indexados desde 0, `nums1` y `nums2`, cada uno de longitud `n`, y un arreglo 2D indexado desde 1 llamado `queries`, donde `queries[i] = [xi, yi]`.
 
-Se te dan dos arreglos `nums1` y `nums2` y una lista de consultas `queries[i] = [xi, yi]`. Para cada consulta, encuentra el máximo `nums1[j] + nums2[j]` tal que `nums1[j] ≥ xi` y `nums2[j] ≥ yi`, o devuelve `-1` si no existe.
+  Para la *i-ésima* consulta, debes encontrar el valor máximo de `nums1[j] + nums2[j]` entre todos los índices `j` (donde `0 ≤ j < n`) que cumplan `nums1[j] ≥ xi` y `nums2[j] ≥ yi`, o devolver `-1` si no existe ningún `j` que cumpla esas condiciones.
 
-#### 💻 Código
+  Debes retornar un arreglo `answer`, donde `answer[i]` es la respuesta a la *i-ésima* consulta.
+
+- **Código:**
 
 ```cpp
 #include <iostream>
@@ -89,13 +76,16 @@ class Solution {
 public:
     vector<int> maximumSumQueries(vector<int>& nums1, vector<int>& nums2, vector<vector<int>>& queries) {
         int n = nums1.size(), m = queries.size();
+
         vector<array<int, 3>> puntos;
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n; ++i) {
             puntos.push_back({ nums1[i], nums2[i], nums1[i] + nums2[i] });
+        }
 
         vector<array<int, 3>> consultas;
-        for (int i = 0; i < m; ++i)
+        for (int i = 0; i < m; ++i) {
             consultas.push_back({ queries[i][0], queries[i][1], i });
+        }
 
         sort(puntos.begin(), puntos.end(), greater<>());
         sort(consultas.begin(), consultas.end(), greater<>());
@@ -108,11 +98,13 @@ public:
             while (pos < n && puntos[pos][0] >= qx) {
                 int y = puntos[pos][1];
                 int suma = puntos[pos][2];
+
                 auto it = mejores.lower_bound(y);
                 if (it != mejores.end() && it->second >= suma) {
                     ++pos;
                     continue;
                 }
+
                 mejores[y] = suma;
                 ++pos;
             }
@@ -130,3 +122,72 @@ public:
         return respuestas;
     }
 };
+```
+- **Ingreso y salida de los datos:**
+
+  - Para `[4, 1]`: el único punto válido es `(4,2)` → `4+2 = 6`  
+  - Para `[1, 3]`: el mejor punto es `(1,9)` → `1+9 = 10`  
+  - Para `[2, 5]`: el mejor punto es `(2,5)` → `2+5 = 7`  
+
+  Cada resultado representa el mayor `x + y` que cumple las condiciones de la consulta.
+
+- **Verificación del algoritmo y explicación:**  
+  El algoritmo recibe dos vectores (`nums1` y `nums2`) y una lista de consultas. Cada consulta busca el valor máximo de `nums1[j] + nums2[j]`, cumpliendo que `nums1[j] ≥ xi` y `nums2[j] ≥ yi`.
+
+  Primero, se combinan los valores de entrada `(x, y, x+y)` en un solo vector de puntos y se ordenan de forma descendente. Las consultas también se ordenan por `x` para facilitar el procesamiento.
+
+  Se utiliza un `map` ordenado para almacenar los mejores puntos (según `y`) que podrían responder futuras consultas. Por cada consulta, se insertan al mapa los puntos válidos y luego se busca, con `lower_bound`, el mejor `x + y` que cumpla con `y ≥ yi`.
+
+  Finalmente, se guarda la mejor suma posible o `-1` si no hay ninguna válida, y se devuelve la lista de respuestas en el orden original de las consultas.
+
+#### 4.1.2 Segundo ejercicio  
+
+### 4.2 Ejercicios con algoritmo KMP
+
+#### 4.2.1 Primer ejercicio  
+#### 4.2.2 Segundo ejercicio  
+
+### 4.3 Ejercicios con algoritmo Z
+
+#### 4.3.1 Primer ejercicio  
+#### 4.3.2 Segundo ejercicio  
+
+### 4.4 Ejercicios con Segment Tree
+
+#### 4.4.1 Primer ejercicio  
+#### 4.4.2 Segundo ejercicio  
+
+### 4.5 Ejercicios con Árbol Fenwick
+
+#### 4.5.1 Primer ejercicio  
+#### 4.5.2 Segundo ejercicio  
+
+### 4.6 Ejercicios con Árboles Ternarios
+
+#### 4.6.1 Primer ejercicio  
+#### 4.6.2 Segundo ejercicio  
+
+### 4.7 Ejercicios con Trie
+
+#### 4.7.1 Primer ejercicio  
+#### 4.7.2 Segundo ejercicio  
+
+### 4.8 Ejercicios con Programación Dinámica
+
+#### 4.8.1 Primer ejercicio  
+#### 4.8.2 Segundo ejercicio  
+
+---
+
+## 5. Conclusiones
+
+### 5.1 Enumere las conclusiones del trabajo final enfatizando su punto de vista en base al objetivo
+
+---
+
+## 6. Anexos
+
+---
+
+## 7. Bibliografía
+

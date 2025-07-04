@@ -124,14 +124,18 @@ public:
 };
 ```
 - **Ingreso y salida de los datos:**
-
+  
+  ![Ingreso y salida](./assets/input-output-map.png)
   - Para `[4, 1]`: el único punto válido es `(4,2)` → `4+2 = 6`  
   - Para `[1, 3]`: el mejor punto es `(1,9)` → `1+9 = 10`  
   - Para `[2, 5]`: el mejor punto es `(2,5)` → `2+5 = 7`  
 
   Cada resultado representa el mayor `x + y` que cumple las condiciones de la consulta.
 
-- **Verificación del algoritmo y explicación:**  
+- **Verificación del algoritmo y explicación:**
+
+  ![Captura de ejecución](./assets/submission-map.png)
+  
   El algoritmo recibe dos vectores (`nums1` y `nums2`) y una lista de consultas. Cada consulta busca el valor máximo de `nums1[j] + nums2[j]`, cumpliendo que `nums1[j] ≥ xi` y `nums2[j] ≥ yi`.
 
   Primero, se combinan los valores de entrada `(x, y, x+y)` en un solo vector de puntos y se ordenan de forma descendente. Las consultas también se ordenan por `x` para facilitar el procesamiento.

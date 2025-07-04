@@ -256,12 +256,7 @@ public:
 
 ### 4.4 Ejercicios con Segment Tree
 
-#### 4.4.1 Primer ejercicio  
-#### 4.4.2 Segundo ejercicio  
-
-### 4.5 Ejercicios con Árbol Fenwick
-
-#### 4.5.1 Ejercicio 1 – Segment Tree
+#### 4.4.1 Ejercicio 1 – Segment Tree
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Segment Tree`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
@@ -372,7 +367,11 @@ public:
 
   Al encapsular esta lógica dentro de una clase `NumArray`, se implementan los métodos `update` y `sumRange` requeridos por el problema, garantizando eficiencia incluso ante un gran número de operaciones.
 
+#### 4.4.2 Segundo ejercicio  
 
+### 4.5 Ejercicios con Árbol Fenwick
+
+#### 4.4.1 Ejercicio 1 – Fenwick Tree
 #### 4.5.2 Segundo ejercicio  
 
 ### 4.6 Ejercicios con Árboles Ternarios
@@ -466,9 +465,9 @@ Estas palabras cumplen con la condición de estar compuestas por al menos dos pa
 - **Verificación del algoritmo y explicación:**  
 El algoritmo tiene como objetivo identificar todas las palabras del arreglo que pueden formarse completamente mediante la concatenación de al menos dos palabras más cortas de la misma lista. Para lograrlo de manera eficiente, se utiliza una estructura de tipo **Trie** (árbol de prefijos), que permite insertar y buscar palabras compartiendo prefijos comunes.
 
-Primero, las palabras se ordenan por longitud creciente. Esto asegura que, al momento de evaluar una palabra, todas las posibles subpalabras que podrían conformarla ya estén insertadas en el Trie. Luego, para cada palabra, se utiliza una función recursiva que explora todas las posibles particiones. Si se logra llegar al final de la palabra habiendo encontrado al menos dos subpalabras válidas en el Trie, entonces se considera una palabra concatenada.
+  Primero, las palabras se ordenan por longitud creciente. Esto asegura que, al momento de evaluar una palabra, todas las posibles subpalabras que podrían conformarla ya estén insertadas en el Trie. Luego, para cada palabra, se utiliza una función recursiva que explora todas las posibles particiones. Si se logra llegar al final de la palabra habiendo encontrado al menos dos subpalabras válidas en el Trie, entonces se considera una palabra concatenada.
 
-Si una palabra cumple esta condición, se añade al resultado. Si no, se inserta en el Trie para que pueda ser utilizada por otras palabras más largas. Al finalizar, se retorna la lista con todas las palabras concatenadas encontradas.
+  Si una palabra cumple esta condición, se añade al resultado. Si no, se inserta en el Trie para que pueda ser utilizada por otras palabras más largas. Al finalizar, se retorna la lista con todas las palabras concatenadas encontradas.
 
 #### 4.7.2 Segundo ejercicio  
 

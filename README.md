@@ -50,7 +50,7 @@
 
 ### 4.1 Ejercicios con estructura `map`
 
-#### 4.1.1 Primer ejercicio  
+#### 4.1.1 Ejercicio 1 - Map
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `map`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode
@@ -149,7 +149,104 @@ public:
 
 ### 4.2 Ejercicios con algoritmo KMP
 
-#### 4.2.1 Primer ejercicio  
+#### 4.2.1 Ejercicio 1 - Algoritmo KMP
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza el algoritmo KMP.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
+- **Enlace:**  
+  https://leetcode.com/problems/remove-all-occurrences-of-a-substring/  
+- **Enunciado:**  
+  Dadas dos cadenas `s` y `part`, realiza la siguiente operación sobre `s` hasta que todas las apariciones de la subcadena `part` sean eliminadas:
+
+  Encuentra la primera aparición (más a la izquierda) de la subcadena `part` y elimínala de `s`.
+
+  Devuelve `s` después de haber eliminado todas las apariciones de `part`.
+
+  Una subcadena es una secuencia continua de caracteres dentro de una cadena.
+
+- **Código:**
+
+```cpp
+#include <vector>
+#include <iostream>
+using namespace std;
+
+class Solution {
+public:
+    void getLPSArray(string& part, vector<int>& lps) {
+        int len = 0, i = 1;
+        lps[0] = 0;
+
+        while (i < part.size()) {
+            if (part[i] == part[len]) {
+                len++;
+                lps[i] = len;
+                i++;
+            } else {
+                if (len != 0)
+                    len = lps[len - 1];
+                else {
+                    lps[i] = 0;
+                    i++;
+                }
+            }
+        }
+    }
+
+    int KMPSearch(string& s, string& part, vector<int>& lps) {
+        int i = 0, j = 0;
+        while (i < s.size()) {
+            if (s[i] == part[j]) {
+                i++; j++;
+            }
+
+            if (j == part.size())
+                return i - j;
+
+            else if (i < s.size() && s[i] != part[j]) {
+                if (j != 0) j = lps[j - 1];
+                else i++;
+            }
+        }
+        return -1;
+    }
+
+    string removeOccurrences(string s, string part) {
+        vector<int> lps(part.size());
+        getLPSArray(part, lps);
+
+        while (true) {
+            int pos = KMPSearch(s, part, lps);
+            if (pos == -1) break;
+            s.erase(pos, part.size());
+        }
+
+        return s;
+    }
+};
+```
+- **Ingreso y salida de los datos:**
+
+  Para la entrada `s = "daabcbaabcbc"` y `part = "abc"`, se eliminan todas las apariciones de `"abc"` de izquierda a derecha.
+
+  El proceso paso a paso es:
+  - `"daabcbaabcbc"` → `"dabaabcbc"`
+  - `"dabaabcbc"` → `"dababc"`
+  - `"dababc"` → `"dab"`
+
+  El resultado final es `"dab"`, ya que no quedan más ocurrencias de `"abc"`.
+
+- **Verificación del algoritmo y explicación:**
+
+  El algoritmo recibe dos cadenas: `s` (texto) y `part` (patrón a eliminar). El objetivo es eliminar todas las apariciones de `part` dentro de `s`, de forma eficiente.
+
+  Primero, se construye un arreglo `lps` (*longest prefix suffix*) que permite optimizar la búsqueda de coincidencias parciales en el patrón. Este paso evita comparar caracteres repetidos innecesariamente.
+
+  Luego, usando el algoritmo **KMP**, se busca la primera aparición del patrón en la cadena. Si se encuentra, se elimina y el proceso se repite desde el inicio.
+
+  La búsqueda se repite hasta que no quedan más ocurrencias del patrón. Finalmente, se retorna la cadena modificada sin las apariciones de `part`.
+
+
 #### 4.2.2 Segundo ejercicio  
 
 ### 4.3 Ejercicios con algoritmo Z

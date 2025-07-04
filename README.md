@@ -261,7 +261,118 @@ public:
 
 ### 4.5 Ejercicios con Árbol Fenwick
 
-#### 4.5.1 Primer ejercicio  
+#### 4.5.1 Ejercicio 1 – Segment Tree
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Segment Tree`.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode  
+- **Enlace:**  
+  https://leetcode.com/problems/range-sum-query-mutable/description/?envType=problem-list-v2&envId=segment-tree  
+
+- **Enunciado:**  
+  Dado un arreglo de enteros `nums`, se deben manejar múltiples consultas de los siguientes tipos:
+  - Actualizar el valor de un elemento en `nums`.
+  - Calcular la suma de los elementos de `nums` entre los índices `left` y `right` (ambos inclusive), donde `left <= right`.
+
+  Se debe implementar la clase `NumArray` con las siguientes funciones:
+  - `NumArray(int[] nums)`: Inicializa el objeto con el arreglo de enteros `nums`.
+  - `void update(int index, int val)`: Actualiza el valor de `nums[index]` por `val`.
+  - `int sumRange(int left, int right)`: Devuelve la suma de los elementos entre los índices `left` y `right`, inclusive.
+
+- **Código:**
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class SegmentTree {
+public:
+    int n;
+    vector<int> tree;
+
+    SegmentTree(int size) {
+        n = size;
+        tree.assign(4 * n, 0);
+    }
+
+    void build(vector<int>& arr, int node = 1, int l = 0, int r = -1) {
+        if (r == -1) r = n - 1;
+        if (l == r) {
+            tree[node] = arr[l];
+        } else {
+            int mid = (l + r) / 2;
+            build(arr, 2 * node, l, mid);
+            build(arr, 2 * node + 1, mid + 1, r);
+            tree[node] = tree[2 * node] + tree[2 * node + 1];
+        }
+    }
+
+    void update(int idx, int newValue, int node = 1, int l = 0, int r = -1) {
+        if (r == -1) r = n - 1;
+        if (l == r) {
+            tree[node] = newValue;
+        } else {
+            int mid = (l + r) / 2;
+            if (idx <= mid) {
+                update(idx, newValue, 2 * node, l, mid);
+            } else {
+                update(idx, newValue, 2 * node + 1, mid + 1, r);
+            }
+            tree[node] = tree[2 * node] + tree[2 * node + 1];
+        }
+    }
+
+    int query(int ql, int qr, int node = 1, int l = 0, int r = -1) {
+        if (r == -1) r = n - 1;
+        if (qr < l || ql > r) return 0;
+        if (ql <= l && r <= qr) return tree[node];
+        int mid = (l + r) / 2;
+        return query(ql, qr, 2 * node, l, mid) + query(ql, qr, 2 * node + 1, mid + 1, r);
+    }
+};
+
+class NumArray {
+private:
+    SegmentTree st;
+public:
+    NumArray(vector<int>& nums) : st(nums.size()) {
+        st.build(nums);
+    }
+
+    void update(int index, int val) {
+        st.update(index, val);
+    }
+
+    int sumRange(int left, int right) {
+        return st.query(left, right);
+    }
+};
+```
+- **Ingreso y salida de los datos:**
+
+  - `NumArray numArray = new NumArray([1, 3, 5]);`  
+    Crea el objeto con el arreglo `[1, 3, 5]`.
+
+  - `numArray.sumRange(0, 2);`  
+    Devuelve `1 + 3 + 5 = 9`.
+
+  - `numArray.update(1, 2);`  
+    Actualiza `nums[1]` de `3` a `2`, por lo que el arreglo queda como `[1, 2, 5]`.
+
+  - `numArray.sumRange(0, 2);`  
+    Devuelve `1 + 2 + 5 = 8`.
+
+- **Verificación del algoritmo y explicación:**
+
+  El algoritmo tiene como objetivo permitir consultas eficientes de suma en rangos y actualizaciones de valores sobre un arreglo de enteros. Para lograrlo, se utiliza un **Segment Tree**, el cual divide el arreglo en segmentos y almacena en cada nodo la suma de un subarreglo determinado.
+
+  Primero, se construye el árbol a partir del arreglo original mediante una función recursiva. Esta función divide el rango actual en mitades y almacena en cada nodo la suma de sus dos hijos. De este modo, se construye una representación jerárquica que permite acceder a la suma de cualquier subarreglo sin necesidad de recorrerlo completamente.
+
+  Cuando se actualiza un valor del arreglo, la función de actualización localiza el nodo correspondiente, modifica el valor y propaga los cambios hacia arriba para mantener las sumas actualizadas. Para responder consultas de suma, el árbol es recorrido selectivamente y solo se suman los nodos que están completamente dentro del rango solicitado. Esto permite obtener el resultado en tiempo logarítmico.
+
+  Al encapsular esta lógica dentro de una clase `NumArray`, se implementan los métodos `update` y `sumRange` requeridos por el problema, garantizando eficiencia incluso ante un gran número de operaciones.
+
+
 #### 4.5.2 Segundo ejercicio  
 
 ### 4.6 Ejercicios con Árboles Ternarios

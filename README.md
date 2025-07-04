@@ -378,11 +378,98 @@ public:
 ### 4.6 Ejercicios con Árboles Ternarios
 
 #### 4.6.1 Primer ejercicio  
-#### 4.6.2 Segundo ejercicio  
 
 ### 4.7 Ejercicios con Trie
 
-#### 4.7.1 Primer ejercicio  
+#### 4.7.1 Ejercicio 1 - Trie
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Trie`.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode  
+- **Enlace:**  
+  https://leetcode.com/problems/concatenated-words/?envType=problem-list-v2&envId=trie  
+
+- **Enunciado:**  
+  Dado un arreglo de cadenas de texto `words` (sin duplicados), devuelve todas las palabras concatenadas que hay en la lista `words`.
+
+  Una palabra concatenada se define como una cadena que está compuesta completamente por al menos dos palabras más cortas (no necesariamente distintas) que también están en el arreglo dado.
+
+- **Código:**
+
+```cpp
+#include <vector>
+#include <map>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+struct TrieNode {
+	map<char, TrieNode*> children;
+	bool EOW = false;
+};
+
+void insert(TrieNode* root, string word) {
+	TrieNode* aux = root;
+	for (char c : word) {
+    	if (!aux->children.count(c)) {
+        	aux->children[c] = new TrieNode();
+    	}
+    	aux = aux->children[c];
+	}
+	aux->EOW = true;
+}
+
+bool isConcatenated(TrieNode* root, string word, int index, int count) {
+	TrieNode* aux = root;
+	for (int i = index; i < word.size(); ++i) {
+    	char c = word[i];
+    	if (!aux->children.count(c)) return false;
+    	aux = aux->children[c];
+    	if (aux->EOW) {
+        	if (i == word.size() - 1) return count >= 1;
+        	if (isConcatenated(root, word, i + 1, count + 1)) return true;
+    	}
+	}
+	return false;
+}
+
+class Solution {
+public:
+	vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
+    	TrieNode* root = new TrieNode();
+
+    	sort(words.begin(), words.end(), [](string& a, string& b) {
+        	return a.size() < b.size();
+    	});
+
+    	vector<string> result;
+    	for (string word : words) {
+        	if (isConcatenated(root, word, 0, 0)) {
+            	result.push_back(word);
+        	}
+        	else {
+            	insert(root, word);
+        	}
+    	}
+    	return result;
+	}
+};
+```
+- **Ingreso y salida de los datos:**  
+En este ejemplo, se identifican como **palabras concatenadas** aquellas que pueden ser formadas completamente uniendo al menos dos palabras más cortas que también están presentes en el arreglo original. Las palabras válidas son:
+
+  - `"catsdogcats"` puede formarse por **"cats" + "dog" + "cats"**.  
+  - `"dogcatsdog"` puede formarse por **"dog" + "cats" + "dog"**.  
+  - `"ratcatdogcat"` puede formarse por **"rat" + "cat" + "dog" + "cat"**.  
+
+Estas palabras cumplen con la condición de estar compuestas por al menos dos palabras más cortas del mismo arreglo.
+
+- **Verificación del algoritmo y explicación:**  
+El algoritmo tiene como objetivo identificar todas las palabras del arreglo que pueden formarse completamente mediante la concatenación de al menos dos palabras más cortas de la misma lista. Para lograrlo de manera eficiente, se utiliza una estructura de tipo **Trie** (árbol de prefijos), que permite insertar y buscar palabras compartiendo prefijos comunes.
+
+Primero, las palabras se ordenan por longitud creciente. Esto asegura que, al momento de evaluar una palabra, todas las posibles subpalabras que podrían conformarla ya estén insertadas en el Trie. Luego, para cada palabra, se utiliza una función recursiva que explora todas las posibles particiones. Si se logra llegar al final de la palabra habiendo encontrado al menos dos subpalabras válidas en el Trie, entonces se considera una palabra concatenada.
+
+Si una palabra cumple esta condición, se añade al resultado. Si no, se inserta en el Trie para que pueda ser utilizada por otras palabras más largas. Al finalizar, se retorna la lista con todas las palabras concatenadas encontradas.
+
 #### 4.7.2 Segundo ejercicio  
 
 ### 4.8 Ejercicios con Programación Dinámica

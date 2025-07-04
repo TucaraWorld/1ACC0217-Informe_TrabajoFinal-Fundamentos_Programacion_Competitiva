@@ -473,7 +473,59 @@ El algoritmo tiene como objetivo identificar todas las palabras del arreglo que 
 
 ### 4.8 Ejercicios con Programación Dinámica
 
-#### 4.8.1 Primer ejercicio  
+#### 4.8.1 Ejercicio 1 - Programación Dinámica
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza programación dinámica  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode  
+- **Enlace:**  
+  https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/?envType=problem-list-v2&envId=dynamic-programming  
+- **Enunciado:**  
+  Dado un string `s`, en un solo paso puedes insertar cualquier carácter en cualquier posición de la cadena.
+
+  Devuelve el número mínimo de pasos necesarios para que `s` se convierta en un palíndromo.
+
+  Un palíndromo es una cadena que se lee igual de izquierda a derecha que de derecha a izquierda.
+
+- **Código:**
+
+```cpp
+class Solution {
+public:
+    int minInsertions(string s) {
+        int n = s.size();
+        string t = s;
+        reverse(t.begin(), t.end());
+
+        vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
+
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 1; j <= n; ++j) {
+                if (s[i - 1] == t[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1; 
+                }
+                else {
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+
+        return n - dp[n][n];
+    }
+};
+```
+- **Ingreso y salida de los datos:**  
+Se desea convertir el string `"mbadm"` en un palíndromo insertando la menor cantidad posible de caracteres. Un palíndromo es una cadena que se lee igual de izquierda a derecha que de derecha a izquierda.
+
+  En este caso, con **2 inserciones** se puede obtener un palíndromo.  
+Por ejemplo: al insertar `'d'` y `'b'`, se puede formar `"mbdadbm"`, que sí es un palíndromo.
+
+- **Verificación del algoritmo y explicación:**  
+El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deben insertarse en un string `s` para convertirlo en un palíndromo (una palabra que se lee igual al derecho y al revés).
+
+  Para lograrlo, se compara el string original con su versión invertida. La idea es identificar la mayor cantidad de caracteres que ya están en orden simétrico en ambos sentidos. Esto se hace usando una técnica de **programación dinámica**, que permite calcular de forma eficiente cuántos caracteres ya están en posición correcta para formar un palíndromo.
+
+  Se construye una tabla `dp` que guarda, paso a paso, el número máximo de coincidencias entre el string original y su reverso. Estas coincidencias representan las partes del string que no necesitan cambios.       Finalmente, se resta esa cantidad al tamaño total del string, obteniendo así el número mínimo de caracteres que deben insertarse para completar el palíndromo.  
+
+
 #### 4.8.2 Segundo ejercicio  
 
 ---

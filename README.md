@@ -227,6 +227,8 @@ public:
 ```
 - **Ingreso y salida de los datos:**
 
+  <img src="./assets/input-output-kmp.png" width="600px" />
+  
   Para la entrada `s = "daabcbaabcbc"` y `part = "abc"`, se eliminan todas las apariciones de `"abc"` de izquierda a derecha.
 
   El proceso paso a paso es:
@@ -238,6 +240,8 @@ public:
 
 - **Verificación del algoritmo y explicación:**
 
+  <img src="./assets/submission-kmp.png" width="600px" />
+  
   El algoritmo recibe dos cadenas: `s` (texto) y `part` (patrón a eliminar). El objetivo es eliminar todas las apariciones de `part` dentro de `s`, de forma eficiente.
 
   Primero, se construye un arreglo `lps` (*longest prefix suffix*) que permite optimizar la búsqueda de coincidencias parciales en el patrón. Este paso evita comparar caracteres repetidos innecesariamente.
@@ -345,6 +349,8 @@ public:
 ```
 - **Ingreso y salida de los datos:**
 
+  <img src="./assets/input-output-segment-tree.png" width="600px" />
+  
   - `NumArray numArray = new NumArray([1, 3, 5]);`  
     Crea el objeto con el arreglo `[1, 3, 5]`.
 
@@ -358,6 +364,8 @@ public:
     Devuelve `1 + 2 + 5 = 8`.
 
 - **Verificación del algoritmo y explicación:**
+
+  <img src="./assets/submission-segment-tree.png" width="600px" />
 
   El algoritmo tiene como objetivo permitir consultas eficientes de suma en rangos y actualizaciones de valores sobre un arreglo de enteros. Para lograrlo, se utiliza un **Segment Tree**, el cual divide el arreglo en segmentos y almacena en cada nodo la suma de un subarreglo determinado.
 
@@ -454,6 +462,9 @@ public:
 };
 ```
 - **Ingreso y salida de los datos:**  
+
+<img src="./assets/input-output-trie.png" width="600px" />
+
 En este ejemplo, se identifican como **palabras concatenadas** aquellas que pueden ser formadas completamente uniendo al menos dos palabras más cortas que también están presentes en el arreglo original. Las palabras válidas son:
 
   - `"catsdogcats"` puede formarse por **"cats" + "dog" + "cats"**.  
@@ -463,6 +474,9 @@ En este ejemplo, se identifican como **palabras concatenadas** aquellas que pued
 Estas palabras cumplen con la condición de estar compuestas por al menos dos palabras más cortas del mismo arreglo.
 
 - **Verificación del algoritmo y explicación:**  
+
+<img src="./assets/submission-trie.png" width="600px" />
+
 El algoritmo tiene como objetivo identificar todas las palabras del arreglo que pueden formarse completamente mediante la concatenación de al menos dos palabras más cortas de la misma lista. Para lograrlo de manera eficiente, se utiliza una estructura de tipo **Trie** (árbol de prefijos), que permite insertar y buscar palabras compartiendo prefijos comunes.
 
   Primero, las palabras se ordenan por longitud creciente. Esto asegura que, al momento de evaluar una palabra, todas las posibles subpalabras que podrían conformarla ya estén insertadas en el Trie. Luego, para cada palabra, se utiliza una función recursiva que explora todas las posibles particiones. Si se logra llegar al final de la palabra habiendo encontrado al menos dos subpalabras válidas en el Trie, entonces se considera una palabra concatenada.
@@ -513,12 +527,20 @@ public:
 };
 ```
 - **Ingreso y salida de los datos:**  
+
+  <img src="./assets/input-output-dp.png" width="600px" />
+
+
 Se desea convertir el string `"mbadm"` en un palíndromo insertando la menor cantidad posible de caracteres. Un palíndromo es una cadena que se lee igual de izquierda a derecha que de derecha a izquierda.
 
   En este caso, con **2 inserciones** se puede obtener un palíndromo.  
 Por ejemplo: al insertar `'d'` y `'b'`, se puede formar `"mbdadbm"`, que sí es un palíndromo.
 
 - **Verificación del algoritmo y explicación:**  
+
+<img src="./assets/submission-dp.png" width="600px" />
+
+
 El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deben insertarse en un string `s` para convertirlo en un palíndromo (una palabra que se lee igual al derecho y al revés).
 
   Para lograrlo, se compara el string original con su versión invertida. La idea es identificar la mayor cantidad de caracteres que ya están en orden simétrico en ambos sentidos. Esto se hace usando una técnica de **programación dinámica**, que permite calcular de forma eficiente cuántos caracteres ya están en posición correcta para formar un palíndromo.

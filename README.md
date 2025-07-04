@@ -1,26 +1,33 @@
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Logo_UPC.png" alt="UPC" width="150"/>
+  <img src="./assets/logo-upc.png" alt="Logo UPC" width="750"/>
 </p>
 
-<h1 align="center">INFORME DEL TRABAJO FINAL</h1>
+<h2 align="center">INFORME DEL TRABAJO FINAL</h2>
 <h2 align="center">(ABET)</h2>
 
 <h3 align="center">CURSO DE FUNDAMENTOS DE PROGRAMACIÓN COMPETITIVA – CC217</h3>
-<h3 align="center">Carrera de Ciencias de la Computación</h3>
+<h4 align="center">Carrera de Ciencias de la Computación</h4>
 
 <p align="center"><strong>Sección:</strong> 271</p>
 
+
+<h4 align="center">Alumno:</h4>
+
+<p align="center">
+  • Felices Vallejos, Aaron Alvaro <br/>
+  • Ibarra Cabrera, Camila Adriana <br/>
+  • Rojas Sánchez, Patricia Lucía del Rosario
+</p>
+
+<br/>
+
+<p align="center"><strong>Julio 2025</strong></p>
+
 ---
 
-### 👨‍🎓 Alumno:
 
-- Felices Vallejos, Aaron Alvaro  
-- Ibarra Cabrera, Camila Adriana  
-- Rojas Sánchez, Patricia Lucía del Rosario
 
-<p align="center">📅 <strong>Julio 2025</strong></p>
 
----
 
 ## 📚 Contenido
 

@@ -319,7 +319,11 @@ public:
 - **Enlace:** https://leetcode.com/problems/range-sum-query-mutable/
 
 - **Enunciado:**  
-  Dado un arreglo de enteros `nums`, se deben manejar múltiples consultas de los siguientes tipos:
+
+  <img src="./assets/segment_tree-enunciado1.png" width="1200px" />
+  <img src="./assets/segment_tree-enunciado2.png" width="1200px" />
+
+   Dado un arreglo de enteros `nums`, se deben manejar múltiples consultas de los siguientes tipos:
   - Actualizar el valor de un elemento en `nums`.
   - Calcular la suma de los elementos de `nums` entre los índices `left` y `right` (ambos inclusive), donde `left <= right`.
 

@@ -32,17 +32,60 @@
 
 ### 1.1 Contexto, objetivo, métodos, conclusiones
 
+En el entorno actual de formación en Ciencias de la Computación, es fundamental que los estudiantes comprendan los conceptos teóricos y sean capaces de aplicarlos en la resolución de problemas reales. La programación competitiva representa un espacio ideal para desarrollar y poner a prueba estas habilidades, ya que plantea desafíos que exigen pensamiento lógico, dominio de estructuras de datos y eficiencia algorítmica. Dentro de este marco, el curso de *Fundamentos de Programación Competitiva* propuso como trabajo final resolver 15 problemas seleccionados de plataformas reconocidas como **LeetCode**, **Codeforces** o **Hackerrank**, con el objetivo de consolidar los aprendizajes adquiridos durante el ciclo.
+
+El objetivo del trabajo fue **diseñar, implementar y evaluar** soluciones computacionales que respondan a requerimientos específicos, alineadas al *Student Outcome 2* del enfoque **ABET**, el cual promueve la capacidad de aplicar el conocimiento técnico en la solución de problemas reales en sistemas de información.
+
+Para lograrlo, se aplicaron distintos métodos y técnicas abordadas durante el curso, como el uso de estructuras como `Segment Tree`, `Trie`, `Map` y algoritmos como `KMP`, `Z` y **programación dinámica**. Cada ejercicio fue documentado con su enunciado, código, validación de resultados y explicación detallada del enfoque adoptado.
+
+Como resultado, se logró consolidar el dominio de herramientas fundamentales para el desarrollo de soluciones algorítmicas eficientes. Además, se fortaleció el razonamiento lógico y cuantitativo de los integrantes del equipo, contribuyendo al desarrollo de competencias clave en su formación profesional.
+
 ---
 
 ## 2. Objetivo del estudiante
 
-### 2.1 Cómo se logró el objetivo según el *student outcome*
+### 2.1 Objetivos
+
+- Aplicar los conocimientos adquiridos durante el curso para resolver problemas de programación competitiva que impliquen el uso de estructuras de datos avanzadas y algoritmos eficientes.  
+- Diseñar, implementar y evaluar soluciones computacionales frente a problemas con restricciones reales, en línea con el *Student Outcome 2* del enfoque ABET.  
+- Fortalecer la capacidad de análisis, resolución de problemas y toma de decisiones basadas en información cuantitativa, mediante la resolución de casos de nivel *medium* y *hard*.  
+- Documentar de forma clara y estructurada el desarrollo de cada algoritmo, explicando su lógica, ejecución y validación, para fomentar una comunicación técnica efectiva.
+
+### 2.2 ¿Cómo se logró el objetivo según el *Student Outcome*?
+
+El trabajo final permitió aplicar de manera directa el *Student Outcome 2*, que establece la capacidad de diseñar, implementar y evaluar soluciones computacionales que cumplan requerimientos en contextos reales.
+
+Para ello, se seleccionaron 15 problemas de dificultad *medium* y *hard* extraídos de plataformas reconocidas como **LeetCode** y **Codeforces**. Cada problema fue analizado a partir de sus restricciones, lo que permitió definir una estrategia de solución adecuada y seleccionar las estructuras de datos o algoritmos más eficientes. Esta etapa corresponde al proceso de **diseño**.
+
+Luego, se procedió a la **implementación** en C++, asegurando el cumplimiento de las condiciones del problema y la correcta ejecución del código en las plataformas correspondientes.  
+
+Finalmente, se llevó a cabo una **evaluación** crítica de cada solución, validando resultados y explicando el porqué de las decisiones tomadas, además de justificar la eficiencia y pertinencia del enfoque elegido. Todo esto fue documentado de forma detallada en el informe.
+
+Gracias a este proceso, se desarrollaron competencias alineadas al *Student Outcome 2*, fortaleciendo la capacidad del equipo para enfrentar retos computacionales complejos con un enfoque estructurado, analítico y eficiente.
 
 ---
 
 ## 3. Plan de actividades
 
 ### 3.1 Actividades para construir los algoritmos
+
+Para cumplir con los objetivos del trabajo final, se siguió una planificación estructurada que permitió avanzar de manera organizada en la resolución de los 15 problemas propuestos. A continuación, se describen las principales actividades realizadas:
+
+- **Selección de problemas:** Se eligieron problemas de nivel *medium* y *hard* de plataformas reconocidas como LeetCode, Codeforces, Hackerrank y GeeksforGeeks, asegurando que cubrieran los tipos de algoritmos definidos por el curso (Map, KMP, Z, Segment Tree, Árbol Fenwick, Árboles Ternarios, Trie y Programación Dinámica).
+
+- **Análisis del enunciado y restricciones:** Para cada problema, se realizó un análisis detallado de los requerimientos y condiciones del enunciado. Esto permitió identificar patrones y definir el enfoque más adecuado para su resolución.
+
+- **Diseño de la solución algorítmica:** Se evaluaron diferentes técnicas posibles para cada caso, eligiendo la que ofreciera un mejor balance entre simplicidad, eficiencia y claridad. En esta etapa se definió la estructura general del código y se diseñaron posibles casos de prueba.
+
+- **Implementación en C++:** Se desarrolló el código utilizando buenas prácticas de programación, haciendo uso de estructuras como vectores, mapas y árboles.
+
+- **Validación en plataforma:** Las soluciones fueron probadas en las plataformas respectivas para verificar su corrección, eficiencia y cumplimiento de las restricciones de tiempo y memoria.
+
+- **Documentación de resultados:** Para cada problema se registraron el enunciado, el código fuente, los datos de entrada y salida, una explicación detallada del algoritmo utilizado y capturas de pantalla que demuestran su validación.
+
+- **Revisión final y ajustes:** Se revisó el trabajo completo, tanto en su forma como en el contenido, realizando correcciones y mejoras para asegurar la coherencia, claridad y calidad del informe.
+
+Esta secuencia de actividades permitió un desarrollo ordenado y efectivo del trabajo final, cumpliendo con los requerimientos establecidos por el curso y alineándose con los resultados de aprendizaje definidos por el enfoque ABET.
 
 ---
 
@@ -54,14 +97,20 @@
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `map`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode
-- **Enlace:**  
-  https://leetcode.com/problems/maximum-sum-queries/submissions/1683370047/  
+- **Enlace:** https://leetcode.com/problems/maximum-sum-queries/ 
 - **Enunciado:**  
+  
+  <img src="./assets/map-enunciado1.png" width="1200px" />
+  <img src="./assets/map-enunciado2.png" width="1200px" />
+  <img src="./assets/map-enunciado3.png" width="1200px" />
+  
   Se te dan dos arreglos de enteros indexados desde 0, `nums1` y `nums2`, cada uno de longitud `n`, y un arreglo 2D indexado desde 1 llamado `queries`, donde `queries[i] = [xi, yi]`.
 
   Para la *i-ésima* consulta, debes encontrar el valor máximo de `nums1[j] + nums2[j]` entre todos los índices `j` (donde `0 ≤ j < n`) que cumplan `nums1[j] ≥ xi` y `nums2[j] ≥ yi`, o devolver `-1` si no existe ningún `j` que cumpla esas condiciones.
 
   Debes retornar un arreglo `answer`, donde `answer[i]` es la respuesta a la *i-ésima* consulta.
+
+  
 
 - **Código:**
 
@@ -252,9 +301,12 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza el algoritmo KMP.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
-- **Enlace:**  
-  https://leetcode.com/problems/remove-all-occurrences-of-a-substring/  
+- **Enlace:** https://leetcode.com/problems/remove-all-occurrences-of-a-substring/  
 - **Enunciado:**  
+
+  <img src="./assets/kmp-enunciado1.png" width="1200px" />
+  <img src="./assets/kmp-enunciado2.png" width="1200px" />
+
   Dadas dos cadenas `s` y `part`, realiza la siguiente operación sobre `s` hasta que todas las apariciones de la subcadena `part` sean eliminadas:
 
   Encuentra la primera aparición (más a la izquierda) de la subcadena `part` y elimínala de `s`.
@@ -454,11 +506,14 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Segment Tree`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/range-sum-query-mutable/description/?envType=problem-list-v2&envId=segment-tree  
+- **Enlace:** https://leetcode.com/problems/range-sum-query-mutable/
 
 - **Enunciado:**  
-  Dado un arreglo de enteros `nums`, se deben manejar múltiples consultas de los siguientes tipos:
+
+  <img src="./assets/segment_tree-enunciado1.png" width="1200px" />
+  <img src="./assets/segment_tree-enunciado2.png" width="1200px" />
+
+   Dado un arreglo de enteros `nums`, se deben manejar múltiples consultas de los siguientes tipos:
   - Actualizar el valor de un elemento en `nums`.
   - Calcular la suma de los elementos de `nums` entre los índices `left` y `right` (ambos inclusive), donde `left <= right`.
 
@@ -539,7 +594,7 @@ public:
 ```
 - **Ingreso y salida de los datos:**
 
-  <img src="./assets/input-output-segment-tree.png" width="600px" />
+   <img src="./assets/input-output-segment-tree.png" width="600px" />
   
   - `NumArray numArray = new NumArray([1, 3, 5]);`  
     Crea el objeto con el arreglo `[1, 3, 5]`.
@@ -855,10 +910,12 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Trie`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/concatenated-words/?envType=problem-list-v2&envId=trie  
-
+- **Enlace:** https://leetcode.com/problems/concatenated-words/ 
 - **Enunciado:**  
+
+  <img src="./assets/trie-enunciado1.png" width="1200px" />
+  <img src="./assets/trie-enunciado2.png" width="1200px" />
+
   Dado un arreglo de cadenas de texto `words` (sin duplicados), devuelve todas las palabras concatenadas que hay en la lista `words`.
 
   Una palabra concatenada se define como una cadena que está compuesta completamente por al menos dos palabras más cortas (no necesariamente distintas) que también están en el arreglo dado.
@@ -926,21 +983,21 @@ public:
 ```
 - **Ingreso y salida de los datos:**  
 
-<img src="./assets/input-output-trie.png" width="600px" />
+  <img src="./assets/input-output-trie.png" width="600px" />
 
-En este ejemplo, se identifican como **palabras concatenadas** aquellas que pueden ser formadas completamente uniendo al menos dos palabras más cortas que también están presentes en el arreglo original. Las palabras válidas son:
+  En este ejemplo, se identifican como **palabras concatenadas** aquellas que pueden ser formadas completamente uniendo al menos dos palabras más cortas que también están presentes en el arreglo original. Las palabras válidas son:
 
-  - `"catsdogcats"` puede formarse por **"cats" + "dog" + "cats"**.  
-  - `"dogcatsdog"` puede formarse por **"dog" + "cats" + "dog"**.  
-  - `"ratcatdogcat"` puede formarse por **"rat" + "cat" + "dog" + "cat"**.  
+    - `"catsdogcats"` puede formarse por **"cats" + "dog" + "cats"**.  
+    - `"dogcatsdog"` puede formarse por **"dog" + "cats" + "dog"**.  
+    - `"ratcatdogcat"` puede formarse por **"rat" + "cat" + "dog" + "cat"**.  
 
-Estas palabras cumplen con la condición de estar compuestas por al menos dos palabras más cortas del mismo arreglo.
+  Estas palabras cumplen con la condición de estar compuestas por al menos dos palabras más cortas del mismo arreglo.
 
 - **Verificación del algoritmo y explicación:**  
 
-<img src="./assets/submission-trie.png" width="600px" />
+  <img src="./assets/submission-trie.png" width="600px" />
 
-El algoritmo tiene como objetivo identificar todas las palabras del arreglo que pueden formarse completamente mediante la concatenación de al menos dos palabras más cortas de la misma lista. Para lograrlo de manera eficiente, se utiliza una estructura de tipo **Trie** (árbol de prefijos), que permite insertar y buscar palabras compartiendo prefijos comunes.
+  El algoritmo tiene como objetivo identificar todas las palabras del arreglo que pueden formarse completamente mediante la concatenación de al menos dos palabras más cortas de la misma lista. Para lograrlo de manera eficiente, se utiliza una estructura de tipo **Trie** (árbol de prefijos), que permite insertar y buscar palabras compartiendo prefijos comunes.
 
   Primero, las palabras se ordenan por longitud creciente. Esto asegura que, al momento de evaluar una palabra, todas las posibles subpalabras que podrían conformarla ya estén insertadas en el Trie. Luego, para cada palabra, se utiliza una función recursiva que explora todas las posibles particiones. Si se logra llegar al final de la palabra habiendo encontrado al menos dos subpalabras válidas en el Trie, entonces se considera una palabra concatenada.
 
@@ -1089,9 +1146,12 @@ Finalmente, se devuelven todos los pares de índices encontrados.
 #### 4.8.1 Ejercicio 1 - Programación Dinámica
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza programación dinámica  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/?envType=problem-list-v2&envId=dynamic-programming  
+- **Enlace:** https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/  
 - **Enunciado:**  
+
+  <img src="./assets/dp-enunciado1.png" width="1200px" />
+  <img src="./assets/dp-enunciado2.png" width="1200px" />
+
   Dado un string `s`, en un solo paso puedes insertar cualquier carácter en cualquier posición de la cadena.
 
   Devuelve el número mínimo de pasos necesarios para que `s` se convierta en un palíndromo.
@@ -1129,18 +1189,17 @@ public:
 
   <img src="./assets/input-output-dp.png" width="600px" />
 
-
-Se desea convertir el string `"mbadm"` en un palíndromo insertando la menor cantidad posible de caracteres. Un palíndromo es una cadena que se lee igual de izquierda a derecha que de derecha a izquierda.
+  Se desea convertir el string `"mbadm"` en un palíndromo insertando la menor cantidad posible de caracteres. Un palíndromo es una cadena que se lee igual de izquierda a derecha que de derecha a izquierda.
 
   En este caso, con **2 inserciones** se puede obtener un palíndromo.  
 Por ejemplo: al insertar `'d'` y `'b'`, se puede formar `"mbdadbm"`, que sí es un palíndromo.
 
 - **Verificación del algoritmo y explicación:**  
 
-<img src="./assets/submission-dp.png" width="600px" />
+  <img src="./assets/submission-dp.png" width="600px" />
 
 
-El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deben insertarse en un string `s` para convertirlo en un palíndromo (una palabra que se lee igual al derecho y al revés).
+  El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deben insertarse en un string `s` para convertirlo en un palíndromo (una palabra que se lee igual al derecho y al revés).
 
   Para lograrlo, se compara el string original con su versión invertida. La idea es identificar la mayor cantidad de caracteres que ya están en orden simétrico en ambos sentidos. Esto se hace usando una técnica de **programación dinámica**, que permite calcular de forma eficiente cuántos caracteres ya están en posición correcta para formar un palíndromo.
 
@@ -1153,11 +1212,32 @@ El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deb
 
 ## 5. Conclusiones
 
-### 5.1 Enumere las conclusiones del trabajo final enfatizando su punto de vista en base al objetivo
+- La resolución de los problemas permitió aplicar de manera práctica los conceptos estudiados en el curso, fortaleciendo las habilidades algorítmicas y el razonamiento lógico del equipo.
+
+- Al enfrentar problemas de nivel *medium* y *hard*, se desarrolló una mayor capacidad para analizar restricciones, elegir estructuras adecuadas y tomar decisiones técnicas eficientes.
+
+- El enfoque del trabajo estuvo alineado al *Student Outcome 2* del enfoque ABET, al integrar las etapas de diseño, implementación y evaluación en cada solución presentada.
+
+- El uso de diversas estructuras de datos y técnicas algorítmicas (como Segment Tree, Trie, Map, KMP, programación dinámica, entre otras) facilitó la resolución efectiva de problemas reales, similares a los que se encuentran en contextos profesionales.
+
+- La documentación clara y detallada de cada ejercicio reforzó la capacidad de comunicar soluciones técnicas, fomentando buenas prácticas en la redacción de informes y la presentación de resultados.
+
+- Esta experiencia también permitió trabajar de forma colaborativa, distribuir tareas y apoyarse mutuamente para completar un proyecto técnico de forma ordenada y con alta calidad.
 
 ---
 
 ## 6. Anexos
+
+### 6.1 Distribución de tareas
+
+A continuación, se presenta el detalle de los algoritmos asignados a cada integrante del equipo, así como su respectiva autoevaluación del nivel de aporte al proyecto:
+
+| Nombre                         | Algoritmos asignados                                                               | Autovaloración |
+|--------------------------------|------------------------------------------------------------------------------------|----------------|
+| **Felices Vallejos, Aaron Alvaro**   | Algoritmo Z, Programación Dinámica, Segment Tree, Árboles Ternarios, Algoritmo Z | 33%            |
+| **Ibarra Cabrera, Camila Adriana**     | Árbol Fenwick, Árbol Fenwick, Algoritmo KMP, Trie, Map                            | 33%            |
+| **Rojas Sánchez, Patricia Lucía del Rosario**    | Segment Tree, Programación Dinámica, Trie, Algoritmo KMP, Map                     | 33%            |
+
 
 ---
 

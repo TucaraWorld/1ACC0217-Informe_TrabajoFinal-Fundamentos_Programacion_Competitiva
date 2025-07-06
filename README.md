@@ -597,7 +597,17 @@ El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deb
 
 ## 5. Conclusiones
 
-### 5.1 Enumere las conclusiones del trabajo final enfatizando su punto de vista en base al objetivo
+- La resolución de los problemas permitió aplicar de manera práctica los conceptos estudiados en el curso, fortaleciendo las habilidades algorítmicas y el razonamiento lógico del equipo.
+
+- Al enfrentar problemas de nivel *medium* y *hard*, se desarrolló una mayor capacidad para analizar restricciones, elegir estructuras adecuadas y tomar decisiones técnicas eficientes.
+
+- El enfoque del trabajo estuvo alineado al *Student Outcome 2* del enfoque ABET, al integrar las etapas de diseño, implementación y evaluación en cada solución presentada.
+
+- El uso de diversas estructuras de datos y técnicas algorítmicas (como Segment Tree, Trie, Map, KMP, programación dinámica, entre otras) facilitó la resolución efectiva de problemas reales, similares a los que se encuentran en contextos profesionales.
+
+- La documentación clara y detallada de cada ejercicio reforzó la capacidad de comunicar soluciones técnicas, fomentando buenas prácticas en la redacción de informes y la presentación de resultados.
+
+- Esta experiencia también permitió trabajar de forma colaborativa, distribuir tareas y apoyarse mutuamente para completar un proyecto técnico de forma ordenada y con alta calidad.
 
 ---
 

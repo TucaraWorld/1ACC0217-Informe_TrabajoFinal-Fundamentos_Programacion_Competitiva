@@ -145,7 +145,106 @@ public:
 
   Finalmente, se guarda la mejor suma posible o `-1` si no hay ninguna válida, y se devuelve la lista de respuestas en el orden original de las consultas.
 
-#### 4.1.2 Segundo ejercicio  
+#### 4.1.2 Ejercicio 2 - Map
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `map`.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode
+- **Enlace:**  
+  https://leetcode.com/problems/arithmetic-subarrays/  
+- **Enunciado:**
+  <img src="./assets/map_2-enunciado1.png" width="1200px" />
+  <img src="./assets/map_2-enunciado2.png" width="1200px" />
+  
+  Una secuencia de números se denomina aritmética si consiste en al menos dos elementos, y la diferencia entre cada dos elementos consecutivos es la misma. Más formalmente, una secuencia `s` es aritmética si y solo si `s[i+1] - s[i] == s[1] - s[0]` para todo `i` válido.
+  
+  Por ejemplo, estas son secuencias aritméticas: 
+  - 1, 3, 5, 7, 9
+  - 7, 7, 7, 7
+  - 3, -1, -5, -9
+  
+  La siguiente secuencia no es aritmética:
+  - 1, 1, 2, 5, 7
+  
+  Se te da un arreglo de **n** enteros, `nums`, y dos arreglos de **m** enteros cada uno, `l` y `r`, que representan las **m** consultas de rango, donde la *i-ésima* consulta es el rango `[l[i], r[i]]`. Todos los arreglos son indexados desde *0*.
+  
+  Devuelve una lista de elementos booleanos `answer`, donde `answer[i]` es *true* si el subarreglo `nums[l[i]], nums[l[i]+1], ..., nums[r[i]]` puede ser reorganizado para formar una secuencia aritmética, y *false* en caso contrario.
+
+- **Código:**
+
+```cpp
+#include <iostream>
+#include <map>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<bool> checkArithmeticSubarrays(vector<int>& nums, vector<int>& l, vector<int>& r) {
+
+        vector<bool> ans;
+
+		for (int i = 0; i < l.size(); ++i) {
+			int start = l[i], end = r[i];
+
+			map<int, int> freq;
+			for (int j = start; j <= end; ++j) freq[nums[j]] += 1;
+			
+			int dif = 0;
+			int prev = freq.begin()->first;
+			for (auto f : freq) {
+				if (f.second == (end - start) + 1) {
+					ans.push_back(true);
+					break;
+				}
+				else if (f.second > 1) {
+					ans.push_back(false);
+					break;
+				}
+				else {
+					if (prev == f.first) continue;
+					if (dif == 0) dif = f.first - prev;
+					else if (f.first - prev != dif) {
+						ans.push_back(false);
+						break;
+					}
+					prev = f.first;
+				}
+			}
+
+			if (ans.size() < i + 1) ans.push_back(true);
+									
+		}
+
+		return ans;
+    }
+};
+```
+
+- **Ingreso y salida de los datos:**
+  
+  <img src="./assets/input-output-map_2.png" width="600px" />
+  
+  Como ejemplo se tiene que `nums = [4,6,5,9,3,7]`, `l = [0,0,2]` y `r = [2,3,5]`.
+  
+  - En la primera consulta que toma el rango de `[0, 2]`, el subarreglo es `[4,6,5]` -> **se puede** reorganizar como `[6,5,4]`, que es una *secuencia aritmética*.
+  - En la segunda consulta que toma el rango de `[0, 3]`, el subarreglo es `[4,6,5,9]` -> **no se puede** reorganizar como una *secuencia aritmética*.
+  - En la tercera consulta que toma el rango de `[2, 5]`, el subarreglo es `[5,9,3,7]` -> **se puede** reorganizar como `[3,5,7,9]`, que es una *secuencia aritmética*.
+
+  Entonces, el vector retornante sería `[true, false, true]`.
+
+
+- **Verificación del algoritmo y explicación:**
+
+  <img src="./assets/submission-map_2.png" width="600px" />
+  
+  El código desarrollado resuelve el problema de determinar si un subarreglo de `nums`, dado por los índices en los arreglos `l` y `r`, se puede reorganizar, de tal modo que forme una secuencia aritmética.
+  
+  El enfoque principal es el uso de la estructura *map*, que permite contar las frecuencias de los elementos en el subarreglo y, al mismo tiempo, garantiza que los elementos estén ordenados. Esto es importante porque una secuencia aritmética requiere que la diferencia entre los elementos consecutivos sea constante. Algunos casos que se pueden detertar con esta estructura son:
+
+  - Si un número tiene una frecuencia igual al tamaño del rango se inserta *true* en la respuesta, ya que todos los elementos del subarreglo con iguales.
+  - Si algún número aparece más de una vez, el subarreglo no puede ser aritmético, y se inserta *false* en la respuesta.
+  - A partir del segundo elemento, se calcula la diferencia y se compara que la diferencia de un elemento con el elemento previo de exactamente la diferencia, en caso contrario, se inserta *false* en la respuesta.
+  - Si el *map* se recorre sin alguna nueva inserción, significa que la diferencia fue constante, y se inserta *true* en la respuesta.
 
 ### 4.2 Ejercicios con algoritmo KMP
 
@@ -250,8 +349,99 @@ public:
 
   La búsqueda se repite hasta que no quedan más ocurrencias del patrón. Finalmente, se retorna la cadena modificada sin las apariciones de `part`.
 
+#### 4.2.2 Ejercicio 2 - Algoritmo KMP
 
-#### 4.2.2 Segundo ejercicio  
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la función LPS (Longest Prefix Suffix) del algoritmo KMP.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
+- **Enlace:**  
+  https://leetcode.com/problems/shortest-palindrome/ 
+- **Enunciado:**
+  <img src="./assets/kmp_2-enunciado.png" width="1200px" />
+  Dada una cadena de texto `s`. Se pide convertir `s` en un palíndromo añadiendo caracteres al inicio de la cadena.
+  
+  Se devuelve el palíndromo más corto que puedas encontrar realizando esta transformación.
+
+- **Código:**
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void getLPS(string& pat, vector<int>& lps)
+{
+	int len = 0, i = 1;
+	lps[0] = 0;
+	int M = pat.size();
+	while (i < M)
+	{
+		if (pat[i] == pat[len])
+		{
+			len++;
+			lps[i] = len;
+			i++;
+		}
+		else
+		{
+			if (len != 0)
+				len = lps[len - 1];
+			else
+			{
+				lps[i] = 0;
+				i++;
+			}
+		}
+	}
+}
+
+class Solution {
+public:
+	string shortestPalindrome(string s) {
+		if (s.empty()) return s;
+
+		string reversed = s;
+		reverse(reversed.begin(), reversed.end());
+
+		string combined = s + "#" + reversed;
+		vector<int> lps(combined.size(), 0);
+		getLPS(combined, lps);
+
+		int prefix = lps[combined.size() - 1];
+		string add = reversed.substr(0, s.size() - prefix);
+
+		return add + s;
+	}
+};
+```
+- **Ingreso y salida de los datos:**
+
+  <img src="./assets/input-output-kmp_2.png" width="600px" />
+  
+  Para la entrada `s = "aacecaaa"`, se obtiene la palabra en reversa, tal que `reversed = "aaacecaa"`.
+
+  A continuación, se combina ambas palabras, con un símbolo de `#` en medio, para determinar el prefijo y sufijo más largo con la función `LPS`.
+
+  Esta función retorna un vector que contiene la longitud de los sufijos y prefijos de la cadena, de modo que, el último dígito del vector es la longitud del palíndromo central de la palabra. Para el input propuesto se tendría:
+
+  - `a a c e c a a a # a a a c e c a a`
+  - `0 1 0 0 0 1 2 2 0 1 2 2 3 4 5 6 7`
+
+  Teniendo como parte central del palíncromo `a a c e c a a` con una longitud de `7`. Entonces, para obtener la parte que no es palíndromo, se extrae de la palabra en reversa los caracteres que no forman parte del palíndromo central, es decir, `8 - 7 = 1` para extraer solo la `a` de la palabra en reversa.
+
+  Se inserta en la palabra original `s`, dando como resultado: `a a a c e c a a a`.
+
+- **Verificación del algoritmo y explicación:**
+
+  <img src="./assets/submission-kmp_2.png" width="600px" />
+  
+  El algoritmo recibe una cadenas `s` (cadena en orden) y se define una cadena `reversed` (cadena en orden inverso de caracteres) para identificar la parte de la cadena original que ya es un palíndromo, en caso la haya.
+
+  Primero, se combina ambas palabras en un `combined = s + # + reversed` para determinar el sufijo de la palabra en reversa que coincida con el prefijo de la cadena original de mayor tamaño.
+  
+  Para ello, se implementa la función de `lps` (*longest prefix suffix*) ligada al algoritmo KMP. Luego de obtener el vector de longitudes, se selecciona el último digito, que representa al palíndromo de mayor longitud ya existente en la palabra original. Los caracteres que siguen a dicho padríndromo son los que se tienen que sumar.
+
+  Para finalizar, se extrae la longitud de caracteres que faltan de la palabra original de la cadena en reversa, para insertar con facilidad los caracteres invertidos, de modo que se cumpla la condición.
 
 ### 4.3 Ejercicios con algoritmo Z
 
@@ -379,8 +569,281 @@ public:
 
 ### 4.5 Ejercicios con Árbol Fenwick
 
-#### 4.4.1 Ejercicio 1 – Fenwick Tree
-#### 4.5.2 Segundo ejercicio  
+#### 4.5.1 Ejercicio 1 – Fenwick Tree
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Fenwick Tree`.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode  
+- **Enlace:**  
+  https://leetcode.com/problems/count-of-range-sum/  
+
+- **Enunciado:**
+  <img src="./assets/fenwick_1-enunciado1.png" width="1200px" />
+  <img src="./assets/fenwick_1-enunciado2.png" width="1200px" />
+
+  Dado un arreglo de enteros `nums` y dos enteros `lower` y `upper`, se devuelve el número de sumas de rangos que se encuentren en el rango `[lower, upper]` *inclusivo*.
+  
+  La suma de un rango `(i, j)` se define como la suma de los elementos del arreglo `nums` entre los índices **i** y **j** inclusivos, donde `i <= j`.
+
+  Nótese que:
+  - `1 <= nums.length <= 10^5`
+  - `2^31 <= nums[i] <= 2^31 - 1`
+  - `10^5 <= lower <= upper <= 10^5`
+  - *The answer is guaranteed to fit in a 32-bit integer.*
+
+- **Código:**
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <map>
+#include <set>
+using namespace std;
+
+#define LL long long
+
+class FenwickTree {
+    vector<LL> tree;
+    LL n;
+public:
+    FenwickTree(LL n) {
+        this->n = n;;
+        tree.resize(n + 1, 0);
+    }
+
+    void update(LL idx, LL X)
+    {
+        while (idx <= n) {
+            tree[idx] += X;
+            LL rightMost = (idx & (-idx));
+            idx += rightMost;
+        }
+    }
+
+    LL query(LL idx)
+    {
+        LL suma = 0;
+        while (idx > 0) {
+            suma += tree[idx];
+            LL rightMost = (idx & (-idx));
+            idx -= rightMost;
+        }
+        return suma;
+    }
+
+    LL rangeQuery(LL l, LL r)
+    {
+        return query(r) - query(l - 1);
+    }
+};
+
+class Solution {
+public:
+    int countRangeSum(vector<int>& nums, int lower, int upper) {
+
+        if (nums.empty()) return 0;
+
+        vector<LL> acumulated(nums.size() + 1, 0);
+        for (LL i = 0; i < nums.size(); ++i)
+            acumulated[i + 1] = acumulated[i] + nums[i];
+        
+
+        set<LL> values;
+        for (LL sum : acumulated) {
+            values.insert(sum);
+            values.insert(sum - lower);
+            values.insert(sum - upper);
+        }
+
+        map<LL, LL> compressed;
+        LL i = 1;
+        for (LL v : values)
+        {
+            compressed[v] = i;
+            ++i;
+        }
+
+        FenwickTree tree(compressed.size());
+        int count = 0;
+
+        for (LL sum : acumulated) {
+            LL left = compressed[sum - upper];
+            LL right = compressed[sum - lower];
+
+            LL q = tree.rangeQuery(left, right);
+            count += q;
+
+            tree.update(compressed[sum], 1);
+        }
+
+        return count;
+    }
+};
+```
+- **Ingreso y salida de los datos:**
+
+  <img src="./assets/input-output-fenwick-tree_1.png" width="600px" />
+  
+  En el ejemplo presentado se tiene que `nums = [-30, 45, -3, -4, 23, 15, 0, 3, -1]`, `lower = -30` y `upper = 20`. Entonces, se debe hallar la cantidad de sub arreglos tal que `-30 <= nums[i] + nums[i+1] + ... + nums[j] <= 20`, donde `i <= j`.
+  
+  Considerando arreglos con una extensión de un elemento, se tiene:
+  - `[-30], [-3], [-4], [15], [0], [3], [-1]`
+
+  Considerando arreglos on una extensión de dos elementos se tiene:
+  - `[-30, 45], [-3, -4], [-4, 23], [15, 0], [0, 3], [3, -1]`
+
+  Considerando arreglos con una extensión de tres elementos se tiene:
+  - `[-30, 45, -3], [-3, -4, 23], [15, 0, 3], [0, 3, -1]`
+
+  Considerando arreglos con una extensión de cuatro elementos se tiene:
+  - `[-30, 45, -3, -4], [15, 0, 3, -1]`
+  
+  No existen arreglos de mayor extensión con una suma acumulada dentro del intervalo de **[-30, 20]**.
+
+  Por lo tanto, en total se tiene **19** sumas de rangos que son *mayores o iguales a -30* y *menores o iguales a 20*.
+  
+- **Verificación del algoritmo y explicación:**
+
+  <img src="./assets/submission-fenwick-tree_1.png" width="600px" />
+
+  El algoritmo tiene como objetivo encontrar las sumas de subarreglos dentro de un intervalo específico (*rango inclusive*). Para calcular la respuesta, se utiliza un **Fenwick Tree** o *Binary Indexed Tree (BIT)*, que guardará las sumas acumuladas del arreglo proporcionado y poporcionará un *query* para determinar de forma eficiente la cantidad de sumas de rangos que cumplen las condiciones del problema.
+
+  Primero, se calculan las sumas acumuladas del arreglo para encontrar con mayor facilidad los rangos de sumas. Tal que:
+
+  -> `nums = [-30, 45, -3, -4, 23, 15, 0, 3, -1]`, *considerando inicia con un índice 1*
+  
+  -> `accumulated = [0, -30, 15, 12, 8, 31, 46, 46, 49, 48]`, *considerando inicia con un índice 0*
+
+  De modo que, para hallar la suma de un rango no se requiera sumar todos los elementos dentro del rango, sino más bien, rentar el limite superior y el límite inferior reducido en 1. Es decir, si se quiere hallar la suma del rango `(2,5)`:
+  - `nums[2] + nums[3] + nums[4] + nums[5] = accumulated[5] - accumulated[1] = 31 - (-30) = 61` 
+  - Entonces, se tiene que: `nums[i] + ... + nums[j] = accumulated[j] - accumulated[i]`
+  Así, la suma de cualquier subarreglo puede calcularse como la diferencia entre las sumas acumuladas en los índices correspondientes
+
+  Dado que se quiere contabilizar la suma de rangos dentro de un intervalo, se realiza el conteo considerando:
+  - `lower <= accumulated[j] - accumulated[i] <= upper`
+  - `- lower >= accumulated[i] - accumulated[j] >= - upper`
+  - `accumulated[j] - lower >= accumulated[i] >= accumulated[j] - upper`
+  - `accumulated[j] - upper <= accumulated[i] <= accumulated[j] - lower`
+
+  Esto nos da el rango de sumas acumuladas para cada subarreglo. Entonces, para evitar duplicados y ordenar todos los valores `accumulated[j] - upper`, `accumulated[j]` y `accumulated[j] - lower` que se puedan forman del arreglo `accumulated` se utiliza un *set*. Asimismo, ya que las sumas pueden ser negativas o con valores muy altos se realiza una mapeo con la esturctura *map* que indexa a partir del **1** los valores calculados.
+
+  Finalmente, se genera un **Fenwick Tree** con capacidad para todos los valores del mapeo, tanto las sumas acumuladas, como los nuevos límites inferiores y superiores calculados a partir de ellas. Se itera por los elementos del arreglo `accumulated` para sumar al conteo de sumas de rangos aquellas que se encuentren en el nuevo intervalo calculado mediante una consulta *queryRange* del árbol en el rango `[accumulated[j]−upper,accumulated[j]−lower]`. Luego, se actualiza el árbol en el índice `sum` con un valor de `1`, indicando que este valor es un límite inferior de un rango de suma que pertenece al intervalo.
+
+  Al final del proceso, el valor *count* contendrá el número total de rangos cuya suma está dentro del intervalo `[lower,upper]`.
+
+#### 4.5.2 Ejercicio 2 – Fenwick Tree
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Fenwick Tree`.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode  
+- **Enlace:**  
+  https://leetcode.com/problems/count-of-smaller-numbers-after-self/  
+
+- **Enunciado:**
+  <img src="./assets/fenwick_2-enunciado1.png" width="1200px" />
+  <img src="./assets/fenwick_2-enunciado2.png" width="1200px" />
+
+  Dado un arreglo de enteros `nums`, se devuelve un arreglo de enteros `counts` donde `counts[i]` es el *número de elementos más pequeños a la derecha* de `nums[i]`.
+
+- **Código:**
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <map>
+#include <set>
+using namespace std;
+
+class FenwickTree {
+    vector<int> tree;
+    int n;
+
+public:
+    FenwickTree(int n) {
+        this->n = n;;
+        tree.resize(n + 1, 0);
+    }
+
+    void update(int idx, int X)
+    {
+        while (idx <= n) {
+            tree[idx] += X;
+            int rightMost = (idx & (-idx));
+            idx += rightMost;
+        }
+    }
+
+    int query(int idx)
+    {
+        int suma = 0;
+        while (idx > 0) {
+            suma += tree[idx];
+            int rightMost = (idx & (-idx));
+            idx -= rightMost;
+        }
+        return suma;
+    }
+
+};
+
+class Solution {
+public:
+    vector<int> countSmaller(vector<int>& nums) {
+		if (nums.empty()) return {};
+
+        set<int> unique;
+        for (int n : nums)
+        {
+            unique.insert(n);
+        }
+
+		map<int, int> compressed;
+        int idx = 1;
+        for (int u : unique)
+        {
+			compressed[u] = idx;
+            idx++;
+        }
+
+        FenwickTree tree(unique.size());
+
+		int N = nums.size();
+		vector<int> ans(N, 0);        
+		for (int i = N - 1; i >= 0; --i) {
+			int current = compressed[nums[i]];
+            if (i < N - 1) {
+				int count = tree.query(current - 1);
+				ans[i] = count;
+            }
+			
+			tree.update(current, 1);
+		}
+
+		return ans;
+    }
+};
+```
+- **Ingreso y salida de los datos:**
+
+  <img src="./assets/input-output-fenwick-tree_2.png" width="600px" />
+  
+  Se proporciona como ejemplo `nums = [5, 2, 6, 1]`.
+  - A la derecha de **5** hay **2** elementos más pequeños `(2 y 1)`.
+  - A la derecha de **2** solo hay **1** elemento más pequeño `(1)`.
+  - A la derecha de **6** hay **1** elemento más pequeño `(1)`.
+  - A la derecha de **1** *no hay elementos más pequeños*.
+  
+  Entonces, el vector retornante seria `[2, 1, 1, 0]`.
+  
+- **Verificación del algoritmo y explicación:**
+
+  <img src="./assets/submission-fenwick-tree_2.png" width="600px" />
+
+  El algoritmo resuelve el problema de contar cuántos números a la derecha de un elemento del arreglo `nums` son menores. Se utiliza un **Fenwick Tree** para realizar consultas y actualizaciones eficientes.
+
+  Primero, se utiliza una estructura *set* para recolectar los valores únicos de `nums` y luego los mapea con *map* a índices consecutivos a partir del 1, evitando así la interrupción por números demasiado grandes o valores negativos.
+
+  Luego, se crea un **Fenwick Tree** cuyo tamaño es igual al número de valores únicos en `nums`. Este árbol se utiliza para llevar un registro de los números procesados y realizar consultas *query* sobre cuántos números menores que el valor actual ya han sido procesados. Para ello, se recorre el arreglo `nums` desde el último elemento hasta el primero, haciendo la consulta en cada iteración luego de actualizar el árbol. Este conteo se guarda en el arreglo ``ans`.
+
+  Finalmente, después de procesar un número, el árbol se actualiza con el valor actual de `nums[i]` para ser considerado en el resto de consultas. De este modo, al finalizar el recorrido del arreglo, el resultado es el número de elementos menores a la derecha de cada número en el arreglo nums.
 
 ### 4.6 Ejercicios con Árboles Ternarios
 
@@ -483,7 +946,143 @@ El algoritmo tiene como objetivo identificar todas las palabras del arreglo que 
 
   Si una palabra cumple esta condición, se añade al resultado. Si no, se inserta en el Trie para que pueda ser utilizada por otras palabras más largas. Al finalizar, se retorna la lista con todas las palabras concatenadas encontradas.
 
-#### 4.7.2 Segundo ejercicio  
+#### 4.7.2 Ejercicio 2 - Trie
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Trie`.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode  
+- **Enlace:**  
+  https://leetcode.com/problems/palindrome-pairs/  
+
+- **Enunciado:** 
+  <img src="./assets/trie_2-enunciado1.png" width="1200px" />
+  <img src="./assets/trie_2-enunciado2.png" width="1200px" />
+
+  Se da un arreglo indexado en `0` de cadenas `únicas` llamado `words`.
+  
+  Un par de palíndromos es un par de enteros `(i, j)` tal que:
+  - *0 <= i*, *j < words.length*,
+  - *i != j*, y
+  - *words[i] + words[j]* (la concatenación de las dos cadenas) es un palíndromo.
+  
+  Devuelve un arreglo de todos los pares de palíndromos de palabras.
+  
+  Se debe escribir un algoritmo con una complejidad temporal de `O(suma de words[i].length)`.
+
+- **Código:**
+
+```cpp
+#include <iostream>
+#include <map>
+#include <set>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+struct TrieNode {
+    map<int, TrieNode*> children;
+    int index = -1;
+    set<int> idxs;
+};
+
+bool isPalindrome(string& s, int i, int j) {
+
+	while (i < j)
+	{
+		if (s[i] != s[j]) return false;
+		++i;
+		--j;
+	}
+
+    return true;
+}
+
+class Trie
+{
+    TrieNode* root;
+public:
+    Trie()
+    {
+		root = new TrieNode();
+    }
+
+    void insert(string s, int i) {
+        TrieNode* node = root;
+
+        for (int j = s.size() - 1; j >= 0; --j) {
+            if (isPalindrome(s, 0, j)) node->idxs.insert(i);
+            char c = s[j];
+
+            if (!node->children.count(c)) node->children[c] = new TrieNode();
+            node = node->children[c];
+        }
+        node->index = i;
+        node->idxs.insert(i);
+    }
+
+    void search(TrieNode* node, string word, int i, vector<vector<int>>& ans)
+    {
+        for (int j = 0; j < word.size() && node; ++j) {
+            if (node->index != -1 && node->index != i && isPalindrome(word, j, word.size() - 1)) ans.push_back({ i, node->index });
+            node = node->children[word[j]];
+        }
+
+        if (!node) return;
+
+        for (int j : node->idxs) {
+            if (i != j) ans.push_back({ i, j });
+        }
+    }
+
+	TrieNode* getRoot() {
+		return root;
+	}
+
+};
+
+class Solution {
+public:
+    vector<vector<int>> palindromePairs(vector<string>& words) {
+		Trie* root = new Trie();
+
+        for (int i = 0; i < words.size(); ++i) root->insert(words[i], i);
+
+        vector<vector<int>> ans;
+
+        for (int i = 0; i < words.size(); ++i) {
+            root->search(root->getRoot(), words[i], i, ans);
+        }
+
+        return ans;
+    }
+};
+```
+- **Ingreso y salida de los datos:**  
+
+<img src="./assets/input-output-trie_2.png" width="600px" />
+
+En el primer ejemplo se brinda `words = ["abcd","dcba","lls","s","sssll"]`, teniendo en cuante que el índice inicia en 0, los pares que forman palíndromos son:
+
+  - `"abcd" y "dcba"` -> con índices correspondientes de **[0, 1]**.  
+  - `"dcba" y "abcd"` -> con índices correspondientes de **[1, 0]**. 
+  - `"s" y "lls"` -> con índices correspondientes de **[3, 2]**. 
+  - `"lls" y "sssll"` -> con índices correspondientes de **[2, 4]**. 
+
+- **Verificación del algoritmo y explicación:**  
+
+<img src="./assets/submission-trie_2.png" width="600px" />
+
+El algoritmo sigue la estructura clásica de un **Trie (árbol de prefijos)**, con una ligera modificación en su **Nodo**, donde en vez de definir la terminación de una palabra con un booleano, se utiliza un entero `index` inicializado en -1 *(cuando no hay terminación de una palabra)* . También, se almacena un *set* de índices `(idxs)` que almacenará los índices de todas aquellas palabras que tengan un prefijo palíndromo.
+
+Para iniciar, se insertan las palabras de `words` en un orden inverso de caracteres, a fin de capturar los sufijos. Para cada carácter de la palabra, se verifica si el prefijo es un palíndromo, y si lo es, almacena el índice de la palabra en el conjunto `idxs` del nodo respectivo.
+
+A continuación, se hace la búsqueda de las palabras que al concatenarse formen un palíndromo.
+
+- Se recorre la cadena `word` verificando si, con cada caracter, el sufijo forma un palíndromo. Si es así, agrega el par de índices a la respuesta `ans` en orden `(i, node->index)`.
+- Después de verificar el sufijo, se hace otro recorrido para los índices almacenados en el *set* se `idxs`. De este modo, se busca palabras que formen un palíndromo al concatenarse con la cadena actual en orden `(i, j)` donde `i` es el índice de la palabra actual y `j` el íncide de la palabra con sufijo palíndromo almacenada.
+
+Finalmente, se devuelven todos los pares de índices encontrados.
+
 
 ### 4.8 Ejercicios con Programación Dinámica
 

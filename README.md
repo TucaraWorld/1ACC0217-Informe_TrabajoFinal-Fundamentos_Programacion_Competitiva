@@ -97,8 +97,7 @@ Esta secuencia de actividades permitió un desarrollo ordenado y efectivo del tr
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `map`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode
-- **Enlace:**  
-  https://leetcode.com/problems/maximum-sum-queries/submissions/1683370047/  
+- **Enlace:** https://leetcode.com/problems/maximum-sum-queries/ 
 - **Enunciado:**  
   Se te dan dos arreglos de enteros indexados desde 0, `nums1` y `nums2`, cada uno de longitud `n`, y un arreglo 2D indexado desde 1 llamado `queries`, donde `queries[i] = [xi, yi]`.
 
@@ -196,8 +195,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza el algoritmo KMP.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
-- **Enlace:**  
-  https://leetcode.com/problems/remove-all-occurrences-of-a-substring/  
+- **Enlace:** https://leetcode.com/problems/remove-all-occurrences-of-a-substring/  
 - **Enunciado:**  
   Dadas dos cadenas `s` y `part`, realiza la siguiente operación sobre `s` hasta que todas las apariciones de la subcadena `part` sean eliminadas:
 
@@ -307,8 +305,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Segment Tree`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/range-sum-query-mutable/description/?envType=problem-list-v2&envId=segment-tree  
+- **Enlace:** https://leetcode.com/problems/range-sum-query-mutable/
 
 - **Enunciado:**  
   Dado un arreglo de enteros `nums`, se deben manejar múltiples consultas de los siguientes tipos:
@@ -435,9 +432,8 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Trie`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/concatenated-words/?envType=problem-list-v2&envId=trie  
-
+- **Enlace:** https://leetcode.com/problems/concatenated-words/
+  
 - **Enunciado:**  
   Dado un arreglo de cadenas de texto `words` (sin duplicados), devuelve todas las palabras concatenadas que hay en la lista `words`.
 
@@ -533,8 +529,7 @@ El algoritmo tiene como objetivo identificar todas las palabras del arreglo que 
 #### 4.8.1 Ejercicio 1 - Programación Dinámica
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza programación dinámica  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/?envType=problem-list-v2&envId=dynamic-programming  
+- **Enlace:** https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/  
 - **Enunciado:**  
   Dado un string `s`, en un solo paso puedes insertar cualquier carácter en cualquier posición de la cadena.
 

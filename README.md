@@ -99,11 +99,18 @@ Esta secuencia de actividades permitió un desarrollo ordenado y efectivo del tr
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode
 - **Enlace:** https://leetcode.com/problems/maximum-sum-queries/ 
 - **Enunciado:**  
+  
+  <img src="./assets/map-enunciado1.png" width="1200px" />
+  <img src="./assets/map-enunciado2.png" width="1200px" />
+  <img src="./assets/map-enunciado3.png" width="1200px" />
+  
   Se te dan dos arreglos de enteros indexados desde 0, `nums1` y `nums2`, cada uno de longitud `n`, y un arreglo 2D indexado desde 1 llamado `queries`, donde `queries[i] = [xi, yi]`.
 
   Para la *i-ésima* consulta, debes encontrar el valor máximo de `nums1[j] + nums2[j]` entre todos los índices `j` (donde `0 ≤ j < n`) que cumplan `nums1[j] ≥ xi` y `nums2[j] ≥ yi`, o devolver `-1` si no existe ningún `j` que cumpla esas condiciones.
 
   Debes retornar un arreglo `answer`, donde `answer[i]` es la respuesta a la *i-ésima* consulta.
+
+  
 
 - **Código:**
 

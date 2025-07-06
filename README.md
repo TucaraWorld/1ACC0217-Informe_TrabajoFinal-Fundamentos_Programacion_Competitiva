@@ -204,6 +204,10 @@ public:
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
 - **Enlace:** https://leetcode.com/problems/remove-all-occurrences-of-a-substring/  
 - **Enunciado:**  
+
+  <img src="./assets/kmp-enunciado1.png" width="1200px" />
+  <img src="./assets/kmp-enunciado2.png" width="1200px" />
+
   Dadas dos cadenas `s` y `part`, realiza la siguiente operación sobre `s` hasta que todas las apariciones de la subcadena `part` sean eliminadas:
 
   Encuentra la primera aparición (más a la izquierda) de la subcadena `part` y elimínala de `s`.

@@ -613,6 +613,17 @@ El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deb
 
 ## 6. Anexos
 
+### 6.1 Distribución de tareas
+
+A continuación, se presenta el detalle de los algoritmos asignados a cada integrante del equipo, así como su respectiva autoevaluación del nivel de aporte al proyecto:
+
+| Nombre                         | Algoritmos asignados                                                               | Autovaloración |
+|--------------------------------|------------------------------------------------------------------------------------|----------------|
+| **Felices Vallejos, Aaron Alvaro**   | Algoritmo Z, Programación Dinámica, Segment Tree, Árboles Ternarios, Algoritmo Z | 33%            |
+| **Ibarra Cabrera, Camila Adriana**     | Árbol Fenwick, Árbol Fenwick, Algoritmo KMP, Trie, Map                            | 33%            |
+| **Rojas Sánchez, Patricia Lucía del Rosario**    | Segment Tree, Programación Dinámica, Trie, Algoritmo KMP, Map                     | 33%            |
+
+
 ---
 
 ## 7. Bibliografía

@@ -32,6 +32,14 @@
 
 ### 1.1 Contexto, objetivo, métodos, conclusiones
 
+En el entorno actual de formación en Ciencias de la Computación, es fundamental que los estudiantes comprendan los conceptos teóricos y sean capaces de aplicarlos en la resolución de problemas reales. La programación competitiva representa un espacio ideal para desarrollar y poner a prueba estas habilidades, ya que plantea desafíos que exigen pensamiento lógico, dominio de estructuras de datos y eficiencia algorítmica. Dentro de este marco, el curso de *Fundamentos de Programación Competitiva* propuso como trabajo final resolver 15 problemas seleccionados de plataformas reconocidas como **LeetCode**, **Codeforces** o **Hackerrank**, con el objetivo de consolidar los aprendizajes adquiridos durante el ciclo.
+
+El objetivo del trabajo fue **diseñar, implementar y evaluar** soluciones computacionales que respondan a requerimientos específicos, alineadas al *Student Outcome 2* del enfoque **ABET**, el cual promueve la capacidad de aplicar el conocimiento técnico en la solución de problemas reales en sistemas de información.
+
+Para lograrlo, se aplicaron distintos métodos y técnicas abordadas durante el curso, como el uso de estructuras como `Segment Tree`, `Trie`, `Map` y algoritmos como `KMP`, `Z` y **programación dinámica**. Cada ejercicio fue documentado con su enunciado, código, validación de resultados y explicación detallada del enfoque adoptado.
+
+Como resultado, se logró consolidar el dominio de herramientas fundamentales para el desarrollo de soluciones algorítmicas eficientes. Además, se fortaleció el razonamiento lógico y cuantitativo de los integrantes del equipo, contribuyendo al desarrollo de competencias clave en su formación profesional.
+
 ---
 
 ## 2. Objetivo del estudiante

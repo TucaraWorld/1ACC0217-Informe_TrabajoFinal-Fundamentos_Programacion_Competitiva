@@ -549,6 +549,10 @@ El algoritmo tiene como objetivo identificar todas las palabras del arreglo que 
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
 - **Enlace:** https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/  
 - **Enunciado:**  
+
+  <img src="./assets/dp-enunciado1.png" width="1200px" />
+  <img src="./assets/dp-enunciado2.png" width="1200px" />
+
   Dado un string `s`, en un solo paso puedes insertar cualquier carácter en cualquier posición de la cadena.
 
   Devuelve el número mínimo de pasos necesarios para que `s` se convierta en un palíndromo.

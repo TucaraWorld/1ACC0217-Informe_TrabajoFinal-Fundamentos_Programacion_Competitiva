@@ -44,7 +44,24 @@ Como resultado, se logró consolidar el dominio de herramientas fundamentales pa
 
 ## 2. Objetivo del estudiante
 
-### 2.1 Cómo se logró el objetivo según el *student outcome*
+### 2.1 Objetivos
+
+- Aplicar los conocimientos adquiridos durante el curso para resolver problemas de programación competitiva que impliquen el uso de estructuras de datos avanzadas y algoritmos eficientes.  
+- Diseñar, implementar y evaluar soluciones computacionales frente a problemas con restricciones reales, en línea con el *Student Outcome 2* del enfoque ABET.  
+- Fortalecer la capacidad de análisis, resolución de problemas y toma de decisiones basadas en información cuantitativa, mediante la resolución de casos de nivel *medium* y *hard*.  
+- Documentar de forma clara y estructurada el desarrollo de cada algoritmo, explicando su lógica, ejecución y validación, para fomentar una comunicación técnica efectiva.
+
+### 2.2 ¿Cómo se logró el objetivo según el *Student Outcome*?
+
+El trabajo final permitió aplicar de manera directa el *Student Outcome 2*, que establece la capacidad de diseñar, implementar y evaluar soluciones computacionales que cumplan requerimientos en contextos reales.
+
+Para ello, se seleccionaron 15 problemas de dificultad *medium* y *hard* extraídos de plataformas reconocidas como **LeetCode** y **Codeforces**. Cada problema fue analizado a partir de sus restricciones, lo que permitió definir una estrategia de solución adecuada y seleccionar las estructuras de datos o algoritmos más eficientes. Esta etapa corresponde al proceso de **diseño**.
+
+Luego, se procedió a la **implementación** en C++, asegurando el cumplimiento de las condiciones del problema y la correcta ejecución del código en las plataformas correspondientes.  
+
+Finalmente, se llevó a cabo una **evaluación** crítica de cada solución, validando resultados y explicando el porqué de las decisiones tomadas, además de justificar la eficiencia y pertinencia del enfoque elegido. Todo esto fue documentado de forma detallada en el informe.
+
+Gracias a este proceso, se desarrollaron competencias alineadas al *Student Outcome 2*, fortaleciendo la capacidad del equipo para enfrentar retos computacionales complejos con un enfoque estructurado, analítico y eficiente.
 
 ---
 

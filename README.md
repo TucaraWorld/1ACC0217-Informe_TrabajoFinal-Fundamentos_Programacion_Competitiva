@@ -69,6 +69,24 @@ Gracias a este proceso, se desarrollaron competencias alineadas al *Student Outc
 
 ### 3.1 Actividades para construir los algoritmos
 
+Para cumplir con los objetivos del trabajo final, se siguió una planificación estructurada que permitió avanzar de manera organizada en la resolución de los 15 problemas propuestos. A continuación, se describen las principales actividades realizadas:
+
+- **Selección de problemas:** Se eligieron problemas de nivel *medium* y *hard* de plataformas reconocidas como LeetCode, Codeforces, Hackerrank y GeeksforGeeks, asegurando que cubrieran los tipos de algoritmos definidos por el curso (Map, KMP, Z, Segment Tree, Árbol Fenwick, Árboles Ternarios, Trie y Programación Dinámica).
+
+- **Análisis del enunciado y restricciones:** Para cada problema, se realizó un análisis detallado de los requerimientos y condiciones del enunciado. Esto permitió identificar patrones y definir el enfoque más adecuado para su resolución.
+
+- **Diseño de la solución algorítmica:** Se evaluaron diferentes técnicas posibles para cada caso, eligiendo la que ofreciera un mejor balance entre simplicidad, eficiencia y claridad. En esta etapa se definió la estructura general del código y se diseñaron posibles casos de prueba.
+
+- **Implementación en C++:** Se desarrolló el código utilizando buenas prácticas de programación, haciendo uso de estructuras como vectores, mapas y árboles.
+
+- **Validación en plataforma:** Las soluciones fueron probadas en las plataformas respectivas para verificar su corrección, eficiencia y cumplimiento de las restricciones de tiempo y memoria.
+
+- **Documentación de resultados:** Para cada problema se registraron el enunciado, el código fuente, los datos de entrada y salida, una explicación detallada del algoritmo utilizado y capturas de pantalla que demuestran su validación.
+
+- **Revisión final y ajustes:** Se revisó el trabajo completo, tanto en su forma como en el contenido, realizando correcciones y mejoras para asegurar la coherencia, claridad y calidad del informe.
+
+Esta secuencia de actividades permitió un desarrollo ordenado y efectivo del trabajo final, cumpliendo con los requerimientos establecidos por el curso y alineándose con los resultados de aprendizaje definidos por el enfoque ABET.
+
 ---
 
 ## 4. Desarrollo

@@ -447,9 +447,12 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Trie`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:** https://leetcode.com/problems/concatenated-words/
-  
+- **Enlace:** https://leetcode.com/problems/concatenated-words/ 
 - **Enunciado:**  
+
+  <img src="./assets/trie-enunciado1.png" width="1200px" />
+  <img src="./assets/trie-enunciado2.png" width="1200px" />
+
   Dado un arreglo de cadenas de texto `words` (sin duplicados), devuelve todas las palabras concatenadas que hay en la lista `words`.
 
   Una palabra concatenada se define como una cadena que está compuesta completamente por al menos dos palabras más cortas (no necesariamente distintas) que también están en el arreglo dado.

@@ -198,8 +198,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `map`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode
-- **Enlace:**  
-  https://leetcode.com/problems/arithmetic-subarrays/  
+- **Enlace:** https://leetcode.com/problems/arithmetic-subarrays/  
 - **Enunciado:**
   <img src="./assets/map_2-enunciado1.png" width="1200px" />
   <img src="./assets/map_2-enunciado2.png" width="1200px" />
@@ -405,8 +404,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la función LPS (Longest Prefix Suffix) del algoritmo KMP.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
-- **Enlace:**  
-  https://leetcode.com/problems/shortest-palindrome/ 
+- **Enlace:** https://leetcode.com/problems/shortest-palindrome/ 
 - **Enunciado:**
   <img src="./assets/kmp_2-enunciado.png" width="1200px" />
   Dada una cadena de texto `s`. Se pide convertir `s` en un palíndromo añadiendo caracteres al inicio de la cadena.
@@ -892,8 +890,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Fenwick Tree`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/count-of-range-sum/  
+- **Enlace:** https://leetcode.com/problems/count-of-range-sum/  
 
 - **Enunciado:**
   <img src="./assets/fenwick_1-enunciado1.png" width="1200px" />
@@ -1053,8 +1050,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Fenwick Tree`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/count-of-smaller-numbers-after-self/  
+- **Enlace:** https://leetcode.com/problems/count-of-smaller-numbers-after-self/  
 
 - **Enunciado:**
   <img src="./assets/fenwick_2-enunciado1.png" width="1200px" />
@@ -1389,8 +1385,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Trie`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/palindrome-pairs/  
+- **Enlace:** https://leetcode.com/problems/palindrome-pairs/  
 
 - **Enunciado:** 
   <img src="./assets/trie_2-enunciado1.png" width="1200px" />

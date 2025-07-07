@@ -1619,10 +1619,10 @@ Por ejemplo: al insertar `'d'` y `'b'`, se puede formar `"mbdadbm"`, que sí es 
 - **Enlace:** https://leetcode.com/problems/minimum-cost-to-cut-a-stick/  
 - **Enunciado:**  
 
-  <img src="./assets/dp-enunciado2_1.png" width="1000px" />
-  <img src="./assets/dp-enunciado2_2.png" width="1000px" />
-  <img src="./assets/dp-enunciado2_3.png" width="1000px" />
-  <img src="./assets/dp-enunciado2_4.png" width="1000px" />
+  <img src="./assets/dp-enunciado2_1.png" width="800px" />
+  <img src="./assets/dp-enunciado2_2.png" width="800px" />
+  <img src="./assets/dp-enunciado2_3.png" width="800px" />
+  <img src="./assets/dp-enunciado2_4.png" width="800px" />
 
   Dado un palo de madera de `n` unidades de longitud. El palo está etiquetado de `0 a n`.
   Dado un array de enteros `"cuts"`, donde `cuts[i]` indica la posición en la que se debe realizar un corte.

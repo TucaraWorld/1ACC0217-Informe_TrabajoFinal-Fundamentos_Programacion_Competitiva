@@ -1579,7 +1579,7 @@ Por ejemplo: al insertar `'d'` y `'b'`, se puede formar `"mbdadbm"`, que sí es 
 - **Verificación del algoritmo y explicación:**  
 
   <img src="./assets/submission-dp.png" width="600px" />
-
+  
 
   El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deben insertarse en un string `s` para convertirlo en un palíndromo (una palabra que se lee igual al derecho y al revés).
 

@@ -1700,6 +1700,9 @@ private:
 
   Se añaden los extremos `(0 y n)` a `cuts` y se ordena. Para cada sub-palo entre `cuts[left]` y `cuts[right]` se ve si no hay cortes intermedios, entonces el costo sería igual a `0`. Se guarda el mínimo costo en `dp[left][right]`.
 
+  <p style="page-break-after: always;"></p>
+
+
 ---
 
 ## 5. Conclusiones
@@ -1730,7 +1733,7 @@ A continuación, se presenta el detalle de los algoritmos asignados a cada integ
 | **Ibarra Cabrera, Camila Adriana**     | Árbol Fenwick, Árbol Fenwick, Algoritmo KMP, Trie, Map                            | 33%            |
 | **Rojas Sánchez, Patricia Lucía del Rosario**    | Segment Tree, Programación Dinámica, Trie, Algoritmo KMP, Map                     | 33%            |
 
-
+<p style="page-break-after: always;"></p>
 ---
 
 ## 7. Bibliografía

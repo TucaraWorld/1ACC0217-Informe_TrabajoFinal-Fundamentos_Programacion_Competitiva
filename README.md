@@ -1371,6 +1371,13 @@ public:
 - **Verificación del algoritmo y explicación:**  
 
   <img src="./assets/submission-trie.png" width="600px" />
+  <img src="./assets/trie-grafico1.png" width="600px" />
+  <img src="./assets/trie-grafico2.png" width="600px" />
+  <img src="./assets/trie-grafico3.png" width="600px" />
+  <img src="./assets/trie-grafico4.png" width="600px" />
+  <img src="./assets/trie-grafico5.png" width="600px" />
+  <img src="./assets/trie-grafico6.png" width="600px" />
+  <img src="./assets/trie-grafico7.png" width="600px" />
 
   El algoritmo tiene como objetivo identificar todas las palabras del arreglo que pueden formarse completamente mediante la concatenación de al menos dos palabras más cortas de la misma lista. Para lograrlo de manera eficiente, se utiliza una estructura de tipo **Trie** (árbol de prefijos), que permite insertar y buscar palabras compartiendo prefijos comunes.
 

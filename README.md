@@ -30,6 +30,12 @@
 
 ## 1. Introducción
 
+Es fundamental que, como estudiantes de **Ciencias de la Computación**, no solo se comprenda los conceptos teóricos, sino que, también, se adquiera la capacidad de aplicarlos a problemas reales. Hoy en día, la programación competitiva se ha convertido en una capacidad y habilidad fundamental en el campo laboral y de investigación, en el que se usa la programación como herramienta en la resolución de problemas lógicos y matemáticos, optimizando los rescursos para cumplir satisfactoriamente con condiciones específicas propuestas (Sinza et al., 2023). A través del curso de **Fundamentos de Programación Competitiva**, se enseña técnicas, algoritmos, buenas prácticas y un buen pensamiento computacional a fin de resolver una serie de problemas seleccionados de plataformas como *LeetCode*, *Codeforces* y *Hackerrank*, con el fin de afianzar los aprendizajes adquiridos durante el ciclo.
+
+El principal objetivo del presente trabajo final es *diseñar, implementar y evaluar* soluciones computacionales que abordaran de manera efectiva los requerimientos específicos de los problemas planteados. Mediante el desarrollo de la actividad, se aplicarán los conocimientos técnicos adquiridos durante las sesiones de clase, alineándose con el *Student Outcome 2* del enfoque *ABET*, el cual promueve la *capacidad de aplicar conocimientos en la resolución de problemas reales dentro de sistemas de información*. Para alcanzar este objetivo, se utilizaron estructuras de datos como *árboles y Trie*, y algoritmos avanzados como *KMP, Z y programación dinámica (DP)*, cada uno implementado y documentado detalladamente para asegurar la correcta solución de los problemas y evidenciar el entendimiento de las soluciones aplicadas.
+
+A lo largo del trabajo, los estudiantes consolidaron su dominio sobre herramientas fundamentales en el desarrollo de soluciones algorítmicas eficientes, al tiempo que fortalecieron su capacidad de razonamiento lógico y cuantitativo. Este proceso no solo les permitió enfrentarse a retos de programación de nivel medio y difícil, sino que también contribuyó significativamente al desarrollo de competencias clave en su formación profesional, preparándolos para enfrentar futuros desafíos en el ámbito de la programación competitiva y más allá.
+
 ### 1.1 Contexto, objetivo, métodos, conclusiones
 
 En el entorno actual de formación en Ciencias de la Computación, es fundamental que los estudiantes comprendan los conceptos teóricos y sean capaces de aplicarlos en la resolución de problemas reales. La programación competitiva representa un espacio ideal para desarrollar y poner a prueba estas habilidades, ya que plantea desafíos que exigen pensamiento lógico, dominio de estructuras de datos y eficiencia algorítmica. Dentro de este marco, el curso de *Fundamentos de Programación Competitiva* propuso como trabajo final resolver 15 problemas seleccionados de plataformas reconocidas como **LeetCode**, **Codeforces** o **Hackerrank**, con el objetivo de consolidar los aprendizajes adquiridos durante el ciclo.
@@ -759,6 +765,7 @@ public:
 - **Verificación del algoritmo y explicación:**
 
   <img src="./assets/submission-fenwick-tree_1.png" width="600px" />
+  <img src="./assets/fenwick_1-grafico.png" width="850px" />
 
   El algoritmo tiene como objetivo encontrar las sumas de subarreglos dentro de un intervalo específico (*rango inclusive*). Para calcular la respuesta, se utiliza un **Fenwick Tree** o *Binary Indexed Tree (BIT)*, que guardará las sumas acumuladas del arreglo proporcionado y poporcionará un *query* para determinar de forma eficiente la cantidad de sumas de rangos que cumplen las condiciones del problema.
 
@@ -891,6 +898,7 @@ public:
 - **Verificación del algoritmo y explicación:**
 
   <img src="./assets/submission-fenwick-tree_2.png" width="600px" />
+  <img src="./assets/fenwick_2-grafico.png" width="600px" />
 
   El algoritmo resuelve el problema de contar cuántos números a la derecha de un elemento del arreglo `nums` son menores. Se utiliza un **Fenwick Tree** para realizar consultas y actualizaciones eficientes.
 
@@ -1128,6 +1136,11 @@ En el primer ejemplo se brinda `words = ["abcd","dcba","lls","s","sssll"]`, teni
 - **Verificación del algoritmo y explicación:**  
 
 <img src="./assets/submission-trie_2.png" width="600px" />
+<img src="./assets/trie_2-grafico1.PNG" width="600px" />
+<img src="./assets/trie_2-grafico2.PNG" width="600px" />
+<img src="./assets/trie_2-grafico3.PNG" width="600px" />
+<img src="./assets/trie_2-grafico4.PNG" width="600px" />
+<img src="./assets/trie_2-grafico5.PNG" width="600px" />
 
 El algoritmo sigue la estructura clásica de un **Trie (árbol de prefijos)**, con una ligera modificación en su **Nodo**, donde en vez de definir la terminación de una palabra con un booleano, se utiliza un entero `index` inicializado en -1 *(cuando no hay terminación de una palabra)* . También, se almacena un *set* de índices `(idxs)` que almacenará los índices de todas aquellas palabras que tengan un prefijo palíndromo.
 

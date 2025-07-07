@@ -765,6 +765,10 @@ public:
 - **Verificación del algoritmo y explicación:**
 
   <img src="./assets/submission-segment-tree.png" width="600px" />
+  <img src="./assets/segment_tree-grafico1.png" width="600px" />
+  <img src="./assets/segment_tree-grafico2.png" width="600px" />
+  <img src="./assets/segment_tree-grafico3.png" width="600px" />
+  <img src="./assets/segment_tree-grafico4.png" width="600px" />
 
   El algoritmo tiene como objetivo permitir consultas eficientes de suma en rangos y actualizaciones de valores sobre un arreglo de enteros. Para lograrlo, se utiliza un **Segment Tree**, el cual divide el arreglo en segmentos y almacena en cada nodo la suma de un subarreglo determinado.
 

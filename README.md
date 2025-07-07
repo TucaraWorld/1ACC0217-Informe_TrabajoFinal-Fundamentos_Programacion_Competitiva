@@ -204,8 +204,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `map`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode
-- **Enlace:**  
-  https://leetcode.com/problems/arithmetic-subarrays/  
+- **Enlace:** https://leetcode.com/problems/arithmetic-subarrays/  
 - **Enunciado:**
   <img src="./assets/map_2-enunciado1.png" width="1200px" />
   <img src="./assets/map_2-enunciado2.png" width="1200px" />
@@ -411,8 +410,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la función LPS (Longest Prefix Suffix) del algoritmo KMP.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
-- **Enlace:**  
-  https://leetcode.com/problems/shortest-palindrome/ 
+- **Enlace:** https://leetcode.com/problems/shortest-palindrome/ 
 - **Enunciado:**
   <img src="./assets/kmp_2-enunciado.png" width="1200px" />
   Dada una cadena de texto `s`. Se pide convertir `s` en un palíndromo añadiendo caracteres al inicio de la cadena.
@@ -503,8 +501,162 @@ public:
 
 ### 4.3 Ejercicios con algoritmo Z
 
-#### 4.3.1 Primer ejercicio  
-#### 4.3.2 Segundo ejercicio  
+#### 4.3.1 Ejercicio 1 - Algoritmo Z
+
+- **Tipo de algoritmo:** Se utiliza el algoritmo Z.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
+- **Enlace:** https://leetcode.com/problems/longest-happy-prefix/ 
+- **Enunciado:**  
+
+  <img src="./assets/AlgorithmZ-enunciado1_1.png" width="1200px" />
+  <img src="./assets/AlgorithmZ-enunciado1_2.png" width="1200px" />
+  
+  Una cadena se denomina prefijo feliz si es un prefijo no vacío que también es un sufijo (excluyéndose a sí mismo).
+
+  Dada una cadena `s`, devuelve el prefijo feliz más largo de `s`. Devuelve una cadena vacía `""` si no existe dicho prefijo.
+    
+
+- **Código:**
+
+```cpp
+#include <vector>
+#include <string>
+using namespace std;
+
+
+class Solution {
+public:
+    string longestPrefix(string s) {
+        int n = s.size();
+        vector<int> Z(n, 0);
+        int left = 0, right = 0;
+        for (int k = 1; k < n; ++k) {
+            if (k > right) {
+                left = right = k;
+                while (right < n && s[right] == s[right - left]) {
+                    right++;
+                }
+                Z[k] = right - left;
+                right--;
+            } else {
+                int k1 = k - left;
+                if (Z[k1] < right - k + 1) {
+                    Z[k] = Z[k1];
+                } else {
+                    left = k;
+                    while (right < n && s[right] == s[right - left]) {
+                        right++;
+                    }
+                    Z[k] = right - left;
+                    right--;
+                }
+            }
+        }
+       
+        int max_len = 0;
+        for (int i = 1; i < n; ++i) {
+            if (Z[i] == n - i) {  
+                max_len = max(max_len, Z[i]);
+            }
+        }
+        return s.substr(0, max_len);
+    }
+};
+```
+- **Ingreso y salida de los datos:**
+
+  <img src="./assets/input-output-algorithmZ_1.png" width="600px" />
+  
+  Para la entrada `s = "ababab"` 
+
+  El proceso paso a paso es:
+  - `Array Z: [0,0,2,0,4,0]` 
+  - `Z[2] = 2 y n - 2 = 4` → `No cumple`
+  - `Z[4] = 4 y n - 4 = 2` → `No cumple`
+  - `Z[5] no aplica`
+  - `Mejor coincidencia: Z[4] = 4`
+
+  El resultado final es `"abab"`, ya que es el prefijo sufijo más grande.
+
+- **Verificación del algoritmo y explicación:**
+
+  <img src="./assets/submission-algorithmZ_1.png" width="600px" />
+
+  `Z[i]` guarda la longitud del substring más largo que empieza en `i` y coincide con el prefijo `s[0...]`. En caso de `left` y `right` tales definen la ventana actual de coincidencia `(s[left...right])`. Si `k > right`, se expande la ventana comparando `s[right]` con `s[right - left]` (prefijo). Si `k` está dentro de la ventana `(k <= right)`, se usa información precalculada para evitar comparaciones redundantes. Para buscar el “happy prefix” se recorre el array `Z` buscando posiciones `i` donde `Z[i]== n-i` (coincidencia hasta el final del string). El máximo de estos valores (max_len) da la longitud del prefijo más largo.
+#### 4.3.2 Ejercicio 2 - Algoritmo Z
+
+- **Tipo de algoritmo:** Se utiliza el algoritmo Z.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
+- **Enlace:** https://leetcode.com/problems/sum-of-scores-of-built-strings/description/ 
+- **Enunciado:**  
+
+  <img src="./assets/AlgorithmZ-enunciado2_1.png" width="1200px" />
+  <img src="./assets/AlgorithmZ-enunciado2_2.png" width="1200px" />
+  <img src="./assets/AlgorithmZ-enunciado2_3.png" width="1200px" />
+
+  Se construye una cadena `s` de longitud `n`, carácter por carácter, anteponiendo cada nuevo carácter al principio de la cadena. Las cadenas se etiquetan del `1 al n`, donde la cadena de longitud `i` se etiqueta como `s_i`.
+
+  Por ejemplo, para `s = "abaca"`, `s_1== "a"`, `s_2 == "ca"`, `s_3 == "aca"`, etc.
+  La puntuación de `s_i` es la longitud del prefijo común más largo entre `s_i` y `s_n` (tenga en cuenta que `s == s_n`).
+
+  Dada la cadena final `s`, devuelva la suma de las puntuaciones de cada `s_i`.
+  
+
+- **Código:**
+
+```cpp
+#include <vector>
+#include <string>
+using namespace std;
+
+
+class Solution {
+public:
+    long long sumScores(string s) {
+        int n = s.length();
+        vector<int> Z(n);
+        long long sum = n; 
+
+
+        int l = 0, r = 0;
+        for (int i = 1; i < n; i++) {
+            if (i <= r)
+                Z[i] = min(r - i + 1, Z[i - l]);
+            while (i + Z[i] < n && s[Z[i]] == s[i + Z[i]])
+                Z[i]++;
+            if (i + Z[i] - 1 > r) {
+                l = i;
+                r = i + Z[i] - 1;
+            }
+            sum += Z[i];
+        }
+
+
+        return sum;
+    }
+};
+```
+- **Ingreso y salida de los datos:**
+
+  <img src="./assets/input-output-algorithmZ_2.png" width="600px" />
+  
+  Para la entrada `s = "babab"` los sufijos son:
+ 
+  - `"babab"` → prefijo común: `"babab"`→ puntaje 5
+  - `"abab"`  → prefijo común: `"bab"`  → puntaje 0
+  - `"bab"`   → prefijo común: `"bab"`  → puntaje 3
+  - `"ab"`    → puntaje 0
+  - `"b"`     →  `"b"`  → puntaje 1
+  - Suma total: 5 + 0 + 3 + 0 + 1 = 9
+
+  El resultado final es 9
+
+- **Verificación del algoritmo y explicación:**
+
+  <img src="./assets/submission-algorithmZ_1.png" width="600px" />
+
+  Nos pide sumar, para cada sufijo de `s`, la longitud del prefijo común que tiene con `s`. 
+  Se utiliza el algoritmo Z, que calcula, para cada índice `i`, el largo del prefijo más largo que coincide entre `s[0…]` y `s[i…]`.  Al final, `sum` contiene la suma de todos los `Z[i]`, lo cual es exactamente lo que pide el problema.
 
 ### 4.4 Ejercicios con Segment Tree
 
@@ -617,6 +769,10 @@ public:
 - **Verificación del algoritmo y explicación:**
 
   <img src="./assets/submission-segment-tree.png" width="600px" />
+  <img src="./assets/segment_tree-grafico1.png" width="600px" />
+  <img src="./assets/segment_tree-grafico2.png" width="600px" />
+  <img src="./assets/segment_tree-grafico3.png" width="600px" />
+  <img src="./assets/segment_tree-grafico4.png" width="600px" />
 
   El algoritmo tiene como objetivo permitir consultas eficientes de suma en rangos y actualizaciones de valores sobre un arreglo de enteros. Para lograrlo, se utiliza un **Segment Tree**, el cual divide el arreglo en segmentos y almacena en cada nodo la suma de un subarreglo determinado.
 
@@ -626,7 +782,113 @@ public:
 
   Al encapsular esta lógica dentro de una clase `NumArray`, se implementan los métodos `update` y `sumRange` requeridos por el problema, garantizando eficiencia incluso ante un gran número de operaciones.
 
-#### 4.4.2 Segundo ejercicio  
+#### 4.4.2 Ejercicio 2 – Segment Tree
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Segment Tree`.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode  
+- **Enlace:** https://leetcode.com/problems/count-of-smaller-numbers-after-self/
+
+- **Enunciado:**  
+
+  <img src="./assets/segment_tree-enunciado2_1.png" width="1200px" />
+  <img src="./assets/segment_tree-enunciado2_2.png" width="1200px" />
+  <img src="./assets/segment_tree-enunciado2_3.png" width="1200px" />
+
+   Dada una matriz de enteros `nums`, devuelve una matriz de enteros counts donde `counts[i]` es el número de elementos más pequeños a la derecha de `nums[i]`.
+
+- **Código:**
+
+```cpp
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+
+
+using namespace std;
+
+
+class Solution {
+private:
+    vector<int> tree;
+    int size;
+    void update(int index, int value) {
+        index += size;
+        tree[index] += value;
+        while (index > 1) {
+            index /= 2;
+            tree[index] = tree[2 * index] + tree[2 * index + 1];
+        }
+    }
+
+
+    int query(int left, int right) {
+        left += size;
+        right += size;
+        int sum = 0;
+        while (left <= right) {
+            if (left % 2 == 1) {
+                sum += tree[left];
+                left++;
+            }
+            if (right % 2 == 0) {
+                sum += tree[right];
+                right--;
+            }
+            left /= 2;
+            right /= 2;
+        }
+        return sum;
+    }
+public:
+    vector<int> countSmaller(vector<int>& nums) {
+        if (nums.empty()) return {};
+        vector<int> sorted_nums = nums;
+        sort(sorted_nums.begin(), sorted_nums.end());
+        unordered_map<int, int> rank;
+        int unique_rank = 0;
+        for (int num : sorted_nums) {
+            if (rank.find(num) == rank.end()) {
+                rank[num] = unique_rank++;
+            }
+        }
+        size = 1;
+        while (size < unique_rank) size <<= 1;
+        tree.assign(2 * size, 0);
+        vector<int> result(nums.size());
+        for (int i = nums.size() - 1; i >= 0; --i) {
+            int r = rank[nums[i]];
+            result[i] = query(0, r - 1);  
+            update(r, 1);                
+        }
+        return result;
+    }
+};
+```
+- **Ingreso y salida de los datos:**
+
+   <img src="./assets/input-output-segment-tree_2_1.png" width="600px" />
+   <img src="./assets/input-output-segment-tree_2_2.png" width="600px" />
+  
+  - `nums = [5,2,6,1]` → Salida:  `[2,1,1,0]`
+  - Ordenar y eliminar duplicados: `[1, 2, 5, 6]`
+  - Asignar rangos (0-indexed): `{1:0, 2:1, 5:2, 6:3}`
+  - Se inicializa el segment tree y se recorre : `nums = [5,2,6,1]`
+  - Se realizan iteraciones : `nums = [5,2,6,1]`
+  - Iteración 1 (i = 3, num = 1): `[?, ?, ?, 0]`
+  - Iteración 2 (i = 2, num = 6): `[?, ?, 1, 0]`
+  - Iteración 3 (i = 1, num = 2): `[?, 1, 1, 0]`
+  - Iteración 4 (i = 0, num = 5): `[2, 1, 1, 0]`
+  - El resultado es `[2, 1, 1, 0]` porque:
+  - 5: Tiene 2 elementos menores a su derecha (1 y 2).
+  - 2: Tiene 1 elemento menor (1).
+  - 6: Tiene 1 elemento menor (1).
+  - 1: No tiene elementos menores.
+
+- **Verificación del algoritmo y explicación:**
+
+  <img src="./assets/submission-segment-tree_2.png" width="600px" />
+
+  Se asignan rangos a los valores únicos ordenados. Se construye un **Segment Tree** para sumas y en el procesamiento se recorre el array de derecha a izquierda. Para cada número se consulta la suma de rangos menores (función `query`). Se actualiza el árbol en la posición del número actual (`update`).
 
 ### 4.5 Ejercicios con Árbol Fenwick
 
@@ -634,8 +896,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Fenwick Tree`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/count-of-range-sum/  
+- **Enlace:** https://leetcode.com/problems/count-of-range-sum/  
 
 - **Enunciado:**
   <img src="./assets/fenwick_1-enunciado1.png" width="1200px" />
@@ -796,8 +1057,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Fenwick Tree`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/count-of-smaller-numbers-after-self/  
+- **Enlace:** https://leetcode.com/problems/count-of-smaller-numbers-after-self/  
 
 - **Enunciado:**
   <img src="./assets/fenwick_2-enunciado1.png" width="1200px" />
@@ -910,7 +1170,118 @@ public:
 
 ### 4.6 Ejercicios con Árboles Ternarios
 
-#### 4.6.1 Primer ejercicio  
+#### 4.6.1 Ejercicio 1 – Árboles Ternarios
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se usa `arbol de busqueda ternario` que es una versión    especializada de árboles ternarios.  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode  
+- **Enlace:** https://leetcode.com/problems/prefix-and-suffix-search/
+
+- **Enunciado:**  
+
+  <img src="./assets/ternary-tree-enunciado1.png" width="1200px" />
+  <img src="./assets/ternary-tree-enunciado2.png" width="1200px" />
+
+   Diseñe un diccionario especial que busque palabras por prefijo y sufijo. Implemente la clase `WordFilter`:
+   - `WordFilter(string[] words)` Inicializa el objeto con las palabras del diccionario 
+   - `f(string pref, string suff)` Devuelve el índice de la palabra en el diccionario, que tiene el prefijo `pref` y el sufijo `suff`. Si hay más de un índice válido, devuelve el **mayor**. Si no existe dicha palabra en el diccionario, devuelve `-1`.
+
+- **Código:**
+
+```cpp
+#include <vector>
+#include <string>
+#include <algorithm>
+
+
+using namespace std;
+
+
+class WordFilter {
+private:
+    struct TernaryNode {
+        char c;
+        int max_weight;
+        TernaryNode* left;
+        TernaryNode* mid;
+        TernaryNode* right;
+        TernaryNode(char ch) : c(ch), max_weight(-1), left(nullptr), mid(nullptr), right(nullptr) {}
+    };
+   
+    TernaryNode* root;
+
+
+    void insert(TernaryNode*& node, const string& word, int index, int pos) {
+        if (pos == word.length()) {
+            if (!node) node = new TernaryNode('\0');
+            node->max_weight = max(node->max_weight, index);
+            return;
+        }
+       
+        char current = word[pos];
+        if (!node) {
+            node = new TernaryNode(current);
+        }
+       
+        if (current < node->c) {
+            insert(node->left, word, index, pos);
+        } else if (current > node->c) {
+            insert(node->right, word, index, pos);
+        } else {
+            insert(node->mid, word, index, pos+1);
+        }
+       
+        node->max_weight = max(node->max_weight, index);
+    }
+   
+    int search(TernaryNode* node, const string& word, int pos) {
+        if (!node) return -1;
+       
+        if (pos == word.length()) {
+            return node->max_weight;
+        }
+       
+        char current = word[pos];
+        if (current < node->c) {
+            return search(node->left, word, pos);
+        } else if (current > node->c) {
+            return search(node->right, word, pos);
+        } else {
+            return search(node->mid, word, pos+1);
+        }
+    }
+
+
+public:
+    WordFilter(vector<string>& words) {
+        root = nullptr;
+        for (int i = 0; i < words.size(); ++i) {
+            string word = words[i];
+            string key;
+            for (int j = 0; j <= word.length(); ++j) {
+                key = word.substr(j) + '#' + word;
+                insert(root, key, i, 0);
+            }
+        }
+    }
+   
+    int f(string prefix, string suffix) {
+        string key = suffix + '#' + prefix;
+        return search(root, key, 0);
+    }
+};
+```
+- **Ingreso y salida de los datos:**
+
+   <img src="./assets/input-output-ternary-tree_1_1.png" width="600px" />
+   <img src="./assets/input-output-ternary-tree_1_2.png" width="600px" />
+  
+  En el caso 1 se agrega la palabra `“apple”` al diccionario y luego se busca con el prefijo `“a”` y sufijo `“e”`, al encontrarse se devuelve la posición de la palabra que es el index `0`. En el caso 2 se agrega la palabra `“mushroom”` y se busca con el prefijo `“u”` y el sufijo `“m”`, al no encontrarse la palabra se devuelve el index `-1`. En el caso 3 se agregan las palabras `“rest”`, `“rent”`, `“movie”`,`”restaurant”` y se hace la búsqueda con el prefijo `“r”` y el sufijo `“t”`, al existir tres palabras con tal prefijo y sufijo se devuelve el index de la palabra más grande que sería `“restaurant”` en el index `3`.
+
+- **Verificación del algoritmo y explicación:**
+
+  <img src="./assets/submission-ternary-tree.png" width="600px" />
+
+  Cada nodo (`TernaryNode`) almacena un carácter (`c`), un peso máximo (`max_weight`, registra el índice más alto de las palabras que pasan por ese nodo) y tres punteros (`left`, `mid`, `right`). Para cada palabra en el diccionario, generamos múltiples claves combinando sus sufijos y prefijos. Insertamos estas claves en el árbol ternario el cual se hace con el menor a la izquierda, mayor a  la derecha e igual en medio. Para buscar un prefijo y sufijo, concatenamos `"sufijo#prefijo"` para formar la clave. Recorremos el árbol comparando caracteres: izquierda si es menor, derecha si es mayor, medio si coincide. Al encontrar el nodo final, se devuelve su peso máximo almacenado.
 
 ### 4.7 Ejercicios con Trie
 
@@ -1004,6 +1375,13 @@ public:
 - **Verificación del algoritmo y explicación:**  
 
   <img src="./assets/submission-trie.png" width="600px" />
+  <img src="./assets/trie-grafico1.png" width="600px" />
+  <img src="./assets/trie-grafico2.png" width="600px" />
+  <img src="./assets/trie-grafico3.png" width="600px" />
+  <img src="./assets/trie-grafico4.png" width="600px" />
+  <img src="./assets/trie-grafico5.png" width="600px" />
+  <img src="./assets/trie-grafico6.png" width="600px" />
+  <img src="./assets/trie-grafico7.png" width="600px" />
 
   El algoritmo tiene como objetivo identificar todas las palabras del arreglo que pueden formarse completamente mediante la concatenación de al menos dos palabras más cortas de la misma lista. Para lograrlo de manera eficiente, se utiliza una estructura de tipo **Trie** (árbol de prefijos), que permite insertar y buscar palabras compartiendo prefijos comunes.
 
@@ -1015,8 +1393,7 @@ public:
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Trie`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
-- **Enlace:**  
-  https://leetcode.com/problems/palindrome-pairs/  
+- **Enlace:** https://leetcode.com/problems/palindrome-pairs/  
 
 - **Enunciado:** 
   <img src="./assets/trie_2-enunciado1.png" width="1200px" />
@@ -1210,7 +1587,18 @@ Por ejemplo: al insertar `'d'` y `'b'`, se puede formar `"mbdadbm"`, que sí es 
 - **Verificación del algoritmo y explicación:**  
 
   <img src="./assets/submission-dp.png" width="600px" />
-
+  <img src="./assets/dp-grafico1.png" width="600px" />
+  <img src="./assets/dp-grafico2.png" width="600px" />
+  <img src="./assets/dp-grafico3.png" width="600px" />
+  <img src="./assets/dp-grafico4.png" width="600px" />
+  <img src="./assets/dp-grafico5.png" width="600px" />
+  <img src="./assets/dp-grafico6.png" width="600px" />
+  <img src="./assets/dp-grafico7.png" width="600px" />
+  <img src="./assets/dp-grafico8.png" width="600px" />
+  <img src="./assets/dp-grafico9.png" width="600px" />
+  <img src="./assets/dp-grafico10.png" width="600px" />
+  <img src="./assets/dp-grafico11.png" width="600px" />
+  <img src="./assets/dp-grafico12.png" width="600px" />
 
   El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deben insertarse en un string `s` para convertirlo en un palíndromo (una palabra que se lee igual al derecho y al revés).
 
@@ -1219,7 +1607,98 @@ Por ejemplo: al insertar `'d'` y `'b'`, se puede formar `"mbdadbm"`, que sí es 
   Se construye una tabla `dp` que guarda, paso a paso, el número máximo de coincidencias entre el string original y su reverso. Estas coincidencias representan las partes del string que no necesitan cambios.       Finalmente, se resta esa cantidad al tamaño total del string, obteniendo así el número mínimo de caracteres que deben insertarse para completar el palíndromo.  
 
 
-#### 4.8.2 Segundo ejercicio  
+#### 4.8.2 Ejercicio 2 - Programación Dinámica
+
+- **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza programación dinámica  
+- **Herramienta web:** El problema pertenece a la plataforma LeetCode  
+- **Enlace:** https://leetcode.com/problems/minimum-cost-to-cut-a-stick/  
+- **Enunciado:**  
+
+  <img src="./assets/dp-enunciado2_1.png" width="1200px" />
+  <img src="./assets/dp-enunciado2_2.png" width="1200px" />
+  <img src="./assets/dp-enunciado2_3.png" width="1200px" />
+  <img src="./assets/dp-enunciado2_4.png" width="1200px" />
+
+  Dado un palo de madera de `n` unidades de longitud. El palo está etiquetado de `0 a n`.
+  Dado un array de enteros `"cuts"`, donde `cuts[i]` indica la posición en la que se debe realizar un corte.
+  Debe realizar los cortes en orden; puede cambiar el orden de los cortes como desee.
+  El coste de un corte es la longitud del palo a cortar; el coste total es la suma de los costes de todos los cortes. Al cortar un palo, este se divide en dos palos más pequeños (es decir, la suma de sus longitudes es la longitud del palo antes del corte).
+  Devuelve el coste total mínimo de los cortes.
+
+
+- **Código:**
+
+```cpp
+#include <vector>
+#include <algorithm>
+#include <climits>
+
+
+using namespace std;
+
+
+class Solution {
+public:
+    int minCost(int n, vector<int>& cuts) {
+        cuts.push_back(0);
+        cuts.push_back(n);
+        sort(cuts.begin(), cuts.end());
+       
+        int m = cuts.size();
+        vector<vector<int>> dp(m, vector<int>(m, -1));
+       
+        return solve(cuts, 0, m - 1, dp);
+    }
+   
+private:
+    int solve(vector<int>& cuts, int left, int right, vector<vector<int>>& dp) {
+        if (right - left <= 1) return 0;
+        if (dp[left][right] != -1) return dp[left][right];
+       
+        int min_cost = INT_MAX;
+        for (int k = left + 1; k < right; k++) {
+            int cost = cuts[right] - cuts[left]
+                       + solve(cuts, left, k, dp)
+                       + solve(cuts, k, right, dp);
+            min_cost = min(min_cost, cost);
+        }
+       
+        dp[left][right] = min_cost;
+        return min_cost;
+    }
+};
+```
+- **Ingreso y salida de los datos:**  
+
+  <img src="./assets/input-output-dp_2.png" width="600px" />
+
+  El ejemplo `(n = 7, cuts = [1,3,4,5])`  se resuelve así:
+
+  Se añaden extremos y se ordenan `cuts = [0, 1, 3, 4, 5, 7]`.  
+  Se inicializa matriz `dp[6][6]` (para 6 puntos de corte) con `-1`. 
+  Caso base: `dp[left][right] = 0` si `right - left <= 1` (no hay cortes intermedios). 
+  Calculamos `dp[left][right]` para todos los subintervalos: 
+  - Sub-palo `[0,7]` (cortes: `[1,3,4,5]`) sería con posibles cortes iniciales (`k`): `1, 3, 4, 5`:
+        Primer corte en 3: 
+        - Costo actual 7 - 0 = `7`
+        - Subproblemas (divide el palo en): `[0,3]` + `[3,7]`.
+        Segundo corte en 5 (en sub-palo `[3,7]`): 
+        - Costo actual 7 - 3 = `4`
+        - Subproblemas (divide el palo en): `[3,5]` + `[5,7]`.
+        Tercer corte en 1 (en sub-palo `[0,3]`): 
+        - Costo actual 3 - 0 = `3`
+        - Subproblemas (divide el palo en): `[0,1]  ` + `[1,3]`.
+        Cuarto corte en 4 (en sub-palo `[3,5]`): 
+        - Costo actual 5 - 3 = `2`
+        - Subproblemas (divide el palo en): `[3,4]` + `[4,5]`.
+  - Costo total: `7` (corte en 3) + `4` (corte en 5) + `3` (corte en 1) + `2` (corte en 4) = `16`. 
+
+
+- **Verificación del algoritmo y explicación:**  
+
+  <img src="./assets/submission-dp_2.png" width="600px" />
+
+  Se añaden los extremos `(0 y n)` a `cuts` y se ordena. Para cada sub-palo entre `cuts[left]` y `cuts[right]` se ve si no hay cortes intermedios, entonces el costo sería igual a `0`. Se guarda el mínimo costo en `dp[left][right]`.
 
 ---
 
@@ -1255,4 +1734,7 @@ A continuación, se presenta el detalle de los algoritmos asignados a cada integ
 ---
 
 ## 7. Bibliografía
+- ABET. (2024). *Criteria for Accrediting Computing Programs, 2024 – 2025*. ABET. https://www.abet.org/wp-content/uploads/2023/05/2024-2025_CAC_Criteria.pdf
+- cppreference.com. (s.f.). *C++ Reference*. https://en.cppreference.com/w/
+- LeetCode. (s.f.). *Plataforma de práctica de algoritmos y estructuras de datos*. https://leetcode.com/
 

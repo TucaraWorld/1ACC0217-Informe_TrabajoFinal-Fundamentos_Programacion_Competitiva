@@ -887,6 +887,10 @@ public:
 - **Verificación del algoritmo y explicación:**
 
   <img src="./assets/submission-segment-tree_2.png" width="600px" />
+  <img src="./assets/grafico-segment-tree_2_1.png" width="600px" />
+  <img src="./assets/grafico-segment-tree_2_2.png" width="600px" />
+  <img src="./assets/grafico-segment-tree_2_3.png" width="600px" />
+  <img src="./assets/grafico-segment-tree_2_4.png" width="600px" />
 
   Se asignan rangos a los valores únicos ordenados. Se construye un **Segment Tree** para sumas y en el procesamiento se recorre el array de derecha a izquierda. Para cada número se consulta la suma de rangos menores (función `query`). Se actualiza el árbol en la posición del número actual (`update`).
 
@@ -1280,6 +1284,7 @@ public:
 - **Verificación del algoritmo y explicación:**
 
   <img src="./assets/submission-ternary-tree.png" width="600px" />
+  <img src="./assets/grafico-arbol-busqueda-ternario.png" width="600px" />
 
   Cada nodo (`TernaryNode`) almacena un carácter (`c`), un peso máximo (`max_weight`, registra el índice más alto de las palabras que pasan por ese nodo) y tres punteros (`left`, `mid`, `right`). Para cada palabra en el diccionario, generamos múltiples claves combinando sus sufijos y prefijos. Insertamos estas claves en el árbol ternario el cual se hace con el menor a la izquierda, mayor a  la derecha e igual en medio. Para buscar un prefijo y sufijo, concatenamos `"sufijo#prefijo"` para formar la clave. Recorremos el árbol comparando caracteres: izquierda si es menor, derecha si es mayor, medio si coincide. Al encontrar el nodo final, se devuelve su peso máximo almacenado.
 
@@ -1697,6 +1702,7 @@ private:
 - **Verificación del algoritmo y explicación:**  
 
   <img src="./assets/submission-dp_2.png" width="600px" />
+  <img src="./assets/grafico-dp_2_1.png" width="600px" />
 
   Se añaden los extremos `(0 y n)` a `cuts` y se ordena. Para cada sub-palo entre `cuts[left]` y `cuts[right]` se ve si no hay cortes intermedios, entonces el costo sería igual a `0`. Se guarda el mínimo costo en `dp[left][right]`.
 

@@ -1726,4 +1726,7 @@ A continuación, se presenta el detalle de los algoritmos asignados a cada integ
 ---
 
 ## 7. Bibliografía
+- ABET. (2024). *Criteria for Accrediting Computing Programs, 2024 – 2025*. ABET. https://www.abet.org/wp-content/uploads/2023/05/2024-2025_CAC_Criteria.pdf
+- cppreference.com. (s.f.). *C++ Reference*. https://en.cppreference.com/w/
+- LeetCode. (s.f.). *Plataforma de práctica de algoritmos y estructuras de datos*. https://leetcode.com/
 

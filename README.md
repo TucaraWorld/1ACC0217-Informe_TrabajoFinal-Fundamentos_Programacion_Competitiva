@@ -497,7 +497,7 @@ public:
 
 ### 4.3 Ejercicios con algoritmo Z
 
-#### 4.3.1 Primer ejercicio
+#### 4.3.1 Ejercicio 1 - Algoritmo Z
 
 - **Tipo de algoritmo:** Se utiliza el algoritmo Z.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
@@ -579,7 +579,7 @@ public:
   <img src="./assets/submission-algorithmZ_1.png" width="600px" />
 
   `Z[i]` guarda la longitud del substring más largo que empieza en `i` y coincide con el prefijo `s[0...]`. En caso de `left` y `right` tales definen la ventana actual de coincidencia `(s[left...right])`. Si `k > right`, se expande la ventana comparando `s[right]` con `s[right - left]` (prefijo). Si `k` está dentro de la ventana `(k <= right)`, se usa información precalculada para evitar comparaciones redundantes. Para buscar el “happy prefix” se recorre el array `Z` buscando posiciones `i` donde `Z[i]== n-i` (coincidencia hasta el final del string). El máximo de estos valores (max_len) da la longitud del prefijo más largo.
-#### 4.3.2 Segundo ejercicio  
+#### 4.3.2 Ejercicio 2 - Algoritmo Z
 
 - **Tipo de algoritmo:** Se utiliza el algoritmo Z.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode.  
@@ -778,7 +778,7 @@ public:
 
   Al encapsular esta lógica dentro de una clase `NumArray`, se implementan los métodos `update` y `sumRange` requeridos por el problema, garantizando eficiencia incluso ante un gran número de operaciones.
 
-#### 4.4.2 Segundo ejercicio  
+#### 4.4.2 Ejercicio 2 – Segment Tree
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza la estructura `Segment Tree`.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
@@ -1166,7 +1166,7 @@ public:
 
 ### 4.6 Ejercicios con Árboles Ternarios
 
-#### 4.6.1 Primer ejercicio  
+#### 4.6.1 Ejercicio 1 – Árboles Ternarios
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se usa `arbol de busqueda ternario` que es una versión    especializada de árboles ternarios.  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  
@@ -1581,7 +1581,7 @@ Por ejemplo: al insertar `'d'` y `'b'`, se puede formar `"mbdadbm"`, que sí es 
   Se construye una tabla `dp` que guarda, paso a paso, el número máximo de coincidencias entre el string original y su reverso. Estas coincidencias representan las partes del string que no necesitan cambios.       Finalmente, se resta esa cantidad al tamaño total del string, obteniendo así el número mínimo de caracteres que deben insertarse para completar el palíndromo.  
 
 
-#### 4.8.2 Segundo ejercicio  
+#### 4.8.2 Ejercicio 2 - Programación Dinámica
 
 - **Tipo de algoritmo:** Para la resolución de este ejercicio se utiliza programación dinámica  
 - **Herramienta web:** El problema pertenece a la plataforma LeetCode  

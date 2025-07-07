@@ -1579,7 +1579,18 @@ Por ejemplo: al insertar `'d'` y `'b'`, se puede formar `"mbdadbm"`, que sí es 
 - **Verificación del algoritmo y explicación:**  
 
   <img src="./assets/submission-dp.png" width="600px" />
-  
+  <img src="./assets/dp-grafico1.png" width="600px" />
+  <img src="./assets/dp-grafico2.png" width="600px" />
+  <img src="./assets/dp-grafico3.png" width="600px" />
+  <img src="./assets/dp-grafico4.png" width="600px" />
+  <img src="./assets/dp-grafico5.png" width="600px" />
+  <img src="./assets/dp-grafico6.png" width="600px" />
+  <img src="./assets/dp-grafico7.png" width="600px" />
+  <img src="./assets/dp-grafico8.png" width="600px" />
+  <img src="./assets/dp-grafico9.png" width="600px" />
+  <img src="./assets/dp-grafico10.png" width="600px" />
+  <img src="./assets/dp-grafico11.png" width="600px" />
+  <img src="./assets/dp-grafico12.png" width="600px" />
 
   El objetivo del algoritmo es encontrar la cantidad mínima de caracteres que deben insertarse en un string `s` para convertirlo en un palíndromo (una palabra que se lee igual al derecho y al revés).
 
